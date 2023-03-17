@@ -1,0 +1,105 @@
+<section class="method first-of-group" id="introduction">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>API Reference</h1>
+                <p>
+                    The Fleetbase API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+                </p>
+                <p>
+                    You can use the Fleetbase API in test mode, which does not affect your live data. The API key you use to authenticate the request determines whether the request is live mode or test mode.
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part method-panel">
+                <span class="snippet-title uppercase">Base URL</span>
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">https://api.fleetbase.io</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="authentication">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Authentication</h1>
+                <p>
+                    The Fleetbase API uses API keys to authenticate requests. You can view and manage your API keys in the <a href={{console-url "auth"}} target="_console">Fleetbase Console</a>.
+                </p>
+                <p>
+                    Test mode secret keys are indistinguishable from live mode secret keys so make sure to double check when using a secret key. For public keys, the test mode keys start with <code class="language-undefined">flb_test_</code> while production mode keys start with <code class="language-undefined">flb_live_</code>.
+                </p>
+                <p>
+                    Additionally API Keys can be created from the console with granular permissions over resources and endpoints.
+                </p>
+                <p>
+                    Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+                </p>
+                <p>
+                    All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <SdkCodeSnippet @title="Global API Key" @titleClass="uppercase" @name="initialize" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            {{#if (not (eq @lang "bash"))}}
+                <div class="method-example-part">
+                    <SdkCodeSnippet @title="Per-Request API Key" @titleClass="uppercase" @name="per-request-auth" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+                </div>
+            {{/if}}
+            <div class="method-example-part method-panel">
+                <span class="snippet-title uppercase">Your API Key</span>
+                <div class="method-panel-body">
+                    <p class="p-4 text-gray-200">A placeholder API key is included in all the examples here. <br><br>To test requests using your account, replace the sample API key with your actual API key or <a href={{console-url "auth"}} target="_console">sign in.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="errors">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Errors</h1>
+                <p>
+                    Fleetbase uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a dispatch failed, etc.). Codes in the 5xx range indicate an error with Fleetbase's servers (these are rare).
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="metadata">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Metadata</h1>
+                <p>
+                    Some Fleetbase resource objects—including Order, Driver, Place, Entity, Vehicle, Vendor, and Contact—have a meta parameter. You can use this parameter to attach additional or internal key-value data to these Fleetbase objects.
+                </p>
+                <p>
+                    Meta is useful for storing additional, structured information on an object. As an example, you could store additional information about a user such as a unique identifier from your system on a Fleetbase Contact object. Metadata is not used by Fleetbase-for example, not used in any internal processes and won't be seen by your users unless you choose to show it to them. The only exception that Fleetbase may use meta fields is if a console extensions makes use of specific order configurations.
+                </p>
+                <p>
+                    Do not store any sensitive information (bank account numbers, card details, etc.) as metadata or in the description parameter.
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>

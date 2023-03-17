@@ -1,0 +1,31 @@
+// BEGIN-SNIPPET driver-token-list
+[
+    {
+        "id": "driver_token_zpJDNge",
+        "country": "SG",
+        "token": "67701",
+        "expires_at": 1528267375,
+        "status": "validated",
+        "created_at": "2018-06-06 05:42:55",
+        "updated_at": "2018-06-06 05:50:04"
+    },
+    {
+        "id": "driver_token_gGRABm4",
+        "country": "MN",
+        "token": "48412",
+        "expires_at": 1528267037,
+        "status": "validated",
+        "created_at": "2018-06-06 05:37:17",
+        "updated_at": "2018-06-06 05:51:38"
+    },
+    {
+        "id": "driver_token_po1PEN8",
+        "country": "SG",
+        "token": "20943",
+        "expires_at": 1528267032,
+        "status": "pending",
+        "created_at": "2018-06-06 05:37:12",
+        "updated_at": "2018-06-06 05:37:12"
+    }
+]
+// END-SNIPPET

@@ -1,0 +1,403 @@
+<section class="method first-of-group" id="service_area">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Service Areas</h1>
+                <p>
+                    Service Area represents a location where your fleet operates, this is typically a city, 
+                    but can also be a country or a region.
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="service_area_object">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>The service area object</h1>
+            </div>
+            <div class="method-list">
+                <h5 class="method-list-title">
+                    Attributes
+                </h5>
+                <ul class="method-list-group">
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Unique identifier for the object.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            name
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Full name of the service area.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            type
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The type of service area, for example: city, country, region
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            latitude
+                            <span class="method-list-item-validation">decimal</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The latitude coordinate for the center of the service area.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            longitude
+                            <span class="method-list-item-validation">decimal</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The longitude coordinate for the center of the service area.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            status
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The current status of the service area, can be "active" or "inactive"
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            created_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the service area was created.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            updated_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the service area was last updated.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-area.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="create_service_area">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Create a service area</h1>
+                <p>
+                    A service area is created by simply providing a city, province or country in which Fleetbase will reverse geocode into a service area.
+                </p>
+                <p>
+                    If the service area cannot be reverse geocoded, Fleetbase will return an error.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                name
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The service area name, which would be a city, province, country, or region. (For example: Seattle, WA).
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The type of service area, this can be "city", "province", or "country".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                status
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The status of the service area, which can be "active" or "inactive".
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">POST https://api.fleetbase.io/v1/service-areas</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="POST /v1/service-areas" @name="create-service-area" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-area.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="retrieve_service_area">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Retrieve a service area</h1>
+                <p>
+                    This endpoint allows you to retrieve a service area object to view it's details.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the service area you want to retrieve.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/service-areas/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/service-areas/{id}" @name="retrieve-service-area" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-area.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="update_service_area">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Update a service area</h1>
+                <p>
+                    You are only able to update the service area status.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the service_area you want to update.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                status
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The status you want to update the service area to.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">PUT https://api.fleetbase.io/v1/service-areas/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="PUT /v1/service-areas/{id}" @name="update-service-area" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-area.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="delete_service_area">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Delete a service area</h1>
+                <p>
+                    Use this endpoint to delete a service area, deleting a service area will also delete all of the zones within the service area.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the service area you want to delete.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">DELETE https://api.fleetbase.io/v1/service-areas/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="DELETE /v1/service-areas/{id}" @name="delete-service-area" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-area-deleted.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="list_service_areas">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>List all service areas</h1>
+                <p>
+                    This endpoint allows you to query service areas you have created, it also provides paginated results on all
+                    the service areas in your Fleetbase.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                query
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This parameter allows you to filter the results by their name.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                status
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter the service areas by their status.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                limit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               A cursor for use in pagination. A limit on the number of objects to be returned. Limit can range between 1 and 100, 
+                                and the default is 10.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                offset
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                A cursor for use in pagination. A offset for the results, 
+                                when the offset is supplied the results will start from the offset.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                order_by
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                You can order the results by any property of the <code>ServiceArea</code> object.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/service-areas</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="QUERY /v1/service-areas/{id}" @name="query-service-area" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-area-list.json" />
+            </div>
+        </div>
+    </div>
+</section>

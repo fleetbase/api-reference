@@ -1,0 +1,498 @@
+<section class="method first-of-group" id="contact">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Contact</h1>
+                <p>
+                    Contact objects allow you to manage your business connections. 
+                    The API allows you to create, delete, and update your contacts programatically. 
+                    You can retrieve individual contacts as well as a list of all your contacts.
+                </p>
+                <p>
+                    Contacts can be categorized by the <code>type</code> property where you can specify
+                    whether they are customers, technicians, business assosciates, or whatever contact necessaary for your business.
+                </p>
+                <p>
+                    Contact objects can also be attached to <code>Payload</code> objects as a <code>passenger</code> 
+                    using the <code>Entity</code> object.
+                </p>
+                <p>
+                    Contact objects can also be assigned to <code>Order</code> objects.
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="contact_object">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>The contact object</h1>
+            </div>
+            <div class="method-list">
+                <h5 class="method-list-title">
+                    Attributes
+                </h5>
+                <ul class="method-list-group">
+                    <li class="method-list-item" id="card_object-id">
+                        <h3 class="method-list-item-label">
+                            id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Unique identifier for the object.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            name
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The full name of the contact.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            title
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The title or salutation of the contact. For example: Chief Technology Officer, Mr, Mrs
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            email
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The email of the contact.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            phone_number
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The phone number of the contact.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            phone_country_code
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The international calling code of the phone number of the contact.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            type
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The type of contact, for example: "customer", "assosciate".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            slug
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The URL safe identifier for the contact generated based on the contact name.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            created_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the contact was created.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            updated_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the contact was last updated.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="contact.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="create_contact">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Create a contact</h1>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                name
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The name of the contact.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The type of contact, for example: "customer", "assosciate", "technician"
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                title
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The title or salutation of the contact. For example: Cheif Technology Officer, Mr
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                email
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The email of the contact.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                phone_number
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The phone number of the contact.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                phone_country_code
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The international calling code of the phone number of the contact.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">POST https://api.fleetbase.io/v1/contacts</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="POST /v1/contacts" @name="create-contact" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="contact.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="retrieve_contact">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Retrieve a contact</h1>
+                <p>
+                    This endpoint allows you to retrieve a contact object to view it's details.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the contact you want to retrieve.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/contacts/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/contacts" @name="retrieve-contact" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="contact.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="update_contact">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Update a contact</h1>
+                <p>
+                    You can update all properties of the Contact.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the contact you want to update.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                name
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The name you want to update the contact to.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                title
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The title or salutation you want to update the contact to. 
+                                For example: Cheif Technology Officer, Mr
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                email
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The email to be updated on the contact.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                phone_number
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The phone number to be updated on the contact.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                phone_country_code
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The international calling code to update on the contact.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The type of contact to update to, for example: "customer", "assosciate".
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">PUT https://api.fleetbase.io/v1/contacts/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="PUT /v1/contacts" @name="update-contact" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="contact-updated.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="delete_contact">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Delete a contact</h1>
+                <p>
+                    Use this endpoint to delete a contact.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the contact you want to delete.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">DELETE https://api.fleetbase.io/v1/contacts/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="DELETE /v1/contacts" @name="delete-contact" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="contact-deleted.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="list_contacts">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>List all contacts</h1>
+                <p>
+                    This endpoint allows you to query contacts you have created, it also provides paginated results on all
+                    the contacts in your Fleetbase.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                query
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This parameter allows you to filter the results by their name.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter contacts by their type.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                limit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               A cursor for use in pagination. A limit on the number of objects to be returned. Limit can range between 1 and 100, 
+                                and the default is 10.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                offset
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                A cursor for use in pagination. A offset for the results, 
+                                when the offset is supplied the results will start from the offset.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                order_by
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                You can order the results by any property of the <code>Contact</code> object.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/contacts</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/contacts" @name="query-contact" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="contact-list.json" />
+            </div>
+        </div>
+    </div>
+</section>

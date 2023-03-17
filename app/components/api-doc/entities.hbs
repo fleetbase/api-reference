@@ -1,0 +1,832 @@
+<section class="method first-of-group" id="entity">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Entity</h1>
+                <p>
+                    <code>Entity</code> objects represent an item or task to be carried out. 
+                    Entities are attached to <code>Payload</code> objects. 
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="entity_object">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>The entity object</h1>
+            </div>
+            <div class="method-list">
+                <h5 class="method-list-title">
+                    Attributes
+                </h5>
+                <ul class="method-list-group">
+                    <li class="method-list-item" id="card_object-id">
+                        <h3 class="method-list-item-label">
+                            id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Unique identifier for the object.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            payload
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of <code>Payload</code> object the entity is attached to.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            tracking_number
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>TrackingNumber</code> assigned to this entity. This object also contains 
+                            the unique QR Code and Barcode for the entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            customer
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>Vendor</code> or <code>Contact</code> object the enntity belongs to or represents.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            internal_id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The internal unique identifier for the entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            name
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The name of the entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            type
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The type of entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            description
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Additional information and details on the entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            meta
+                            <span class="method-list-item-validation">hash</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Set of key-value pairs that you can attach to an object. This can be useful for storing 
+                            additional information about the object in a structured format.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            weight
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The weight of the entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            weight_unit
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The unit of measurement of the weight. The weight unit can either 
+                            be <code>g</code>, <code>oz</code>, <code>lb</code>, <code>kg</code>.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            length
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The length of the entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            width
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The wifth of the entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            height
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The height of the entity.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            dimensions_unit
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The unit of measurement to use for the entity dimensions. The dimensions unit can either be 
+                           <code>cm</code>, <code>in</code>, <code>ft</code>, <code>mm</code>, <code>m</code>, <code>yd</code>.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            declared_value
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The value of the entity defined by the sender.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            price
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The price of the entity if applicable.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            sale_price
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The sale price of the entity if applicable.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            sku
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The SKU of the entity if applicable.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            currency
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The 3-letter ISO code currency that the entity uses for it's <code>declared_value</code>, 
+                           <code>price</code>, or <code>sale_price</code>.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            created_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the entity was created.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            updated_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the entity was last updated.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="entity.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="create_entity">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Create a entity</h1>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                name
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The name of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The type of entity. The type can be anything to accomadate all types of operations. 
+                                Standard entity types used in most operations would be <code>parcel</code>, <code>passenger</code>, 
+                                <code>fcl</code>, or <code>food</code>.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                payload
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of <code>Payload</code> object the entity should be attached to.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                customer
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Vendor</code> or <code>Contact</code> object you want to assign to the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                internal_id
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The internal unique identifier for the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                description
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Additional information and details on the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                meta
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Set of key-value pairs that you can attach to an object. This can be useful for storing 
+                                additional information about the object in a structured format.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                weight
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The weight of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                weight_unit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The unit of measurement of the weight. The weight unit can either 
+                                be <code>g</code>, <code>oz</code>, <code>lb</code>, <code>kg</code>. 
+                                <div>This property will be required if the weight is set.</div>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                length
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The length of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                width
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The wifth of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                height
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The height of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                dimensions_unit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The unit of measurement to use for the entity dimensions. The dimensions unit can either be 
+                               <code>cm</code>, <code>in</code>, <code>ft</code>, <code>mm</code>, <code>m</code>, <code>yd</code>.
+                               <div>This property will be required if any of the dimensions (length, width, height) is set.</div>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                declared_value
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The value of the entity defined by the sender.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                price
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The price of the entity if applicable.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                sale_price
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The sale price of the entity if applicable.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                sku
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The SKU of the entity if applicable.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                currency
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The 3-letter ISO code currency that the entity uses for it's <code>declared_value</code>, 
+                               <code>price</code>, or <code>sale_price</code>.
+                               <div>This property will be required if declared_value, price, or sale_price is set.</div>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">POST https://api.fleetbase.io/v1/entities</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="POST /v1/entities" @name="create-entity" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="entity.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="retrieve_entity">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Retrieve a entity</h1>
+                <p>
+                    This endpoint allows you to retrieve a entity object to view it's details.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the entity you want to retrieve.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/entities/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/entities" @name="retrieve-entity" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="entity.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="update_entity">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Update a entity</h1>
+                <p>
+                    You can update all properties of the Entity.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the entity you want to update.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                name
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The name of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The type of entity. The type can be anything to accomadate all types of operations. 
+                                Standard entity types used in most operations would be <code>parcel</code>, <code>passenger</code>, 
+                                <code>fcl</code>, or <code>food</code>.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                payload
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of <code>Payload</code> object the entity should be attached to.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                customer
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Vendor</code> or <code>Contact</code> object you want to assign to the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                internal_id
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The internal unique identifier for the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                description
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Additional information and details on the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                meta
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Set of key-value pairs that you can attach to an object. This can be useful for storing 
+                                additional information about the object in a structured format.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                weight
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The weight of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                weight_unit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The unit of measurement of the weight. The weight unit can either 
+                                be <code>g</code>, <code>oz</code>, <code>lb</code>, <code>kg</code>. 
+                                <div>This property will be required if the weight is set.</div>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                length
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The length of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                width
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The wifth of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                height
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The height of the entity.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                dimensions_unit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The unit of measurement to use for the entity dimensions. The dimensions unit can either be 
+                               <code>cm</code>, <code>in</code>, <code>ft</code>, <code>mm</code>, <code>m</code>, <code>yd</code>.
+                               <div>This property will be required if any of the dimensions (length, width, height) is set.</div>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                declared_value
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The value of the entity defined by the sender.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                price
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The price of the entity if applicable.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                sale_price
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The sale price of the entity if applicable.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                sku
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The SKU of the entity if applicable.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                currency
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The 3-letter ISO code currency that the entity uses for it's <code>declared_value</code>, 
+                               <code>price</code>, or <code>sale_price</code>.
+                               <div>This property will be required if declared_value, price, or sale_price is set.</div>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">PUT https://api.fleetbase.io/v1/entities/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="PUT /v1/entities" @name="update-entity" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="entity-updated.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="delete_entity">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Delete a entity</h1>
+                <p>
+                    Use this endpoint to delete a entity.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the entity you want to delete.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">DELETE https://api.fleetbase.io/v1/entities/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="DELETE /v1/entities" @name="delete-entity" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="entity-deleted.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="list_entities">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>List all entities</h1>
+                <p>
+                    This endpoint allows you to query entities you have created, it also provides paginated results on all
+                    the entities in your Fleetbase.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                query
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This parameter allows you to filter the results by their name.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter entities by their type.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                limit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               A cursor for use in pagination. A limit on the number of objects to be returned. Limit can range between 1 and 100, 
+                                and the default is 10.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                offset
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                A cursor for use in pagination. A offset for the results, 
+                                when the offset is supplied the results will start from the offset.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                order_by
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                You can order the results by any property of the <code>Entity</code> object.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/entities</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/entities" @name="query-entity" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="entity-list.json" />
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,793 @@
+<div id="api-reference" class="api-docs-container w-full h-full dark:bg-gray-900 bg-gray-100 overflow-hidden">
+    <div class="grid grid-cols-12 h-screen">
+        <aside class="col-span-2 h-full">
+            <div class="side-nav-container w-full h-full border-r border-gray-800">
+                <div class="side-nav-header p-4 border-b border-gray-800 w-full">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <a href="https://fleetbase.io/" class="flex items-center no-underline mr-5">
+                                <img class="h-6 w-auto sm:h-7 mr-3" src="/images/icon.png" alt="Fleetbase" />
+                                <div class="flex">
+                                    <span class="logo-text text-2xl font-bold">
+                                        Fleetbase
+                                    </span>
+                                    <span class="mt-1 flex items-center text-lg font-bold text-gray-600 ml-1">
+                                        API
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="h-full overflow-y-scroll">
+                    <nav role="navigation" class="side-nav-items-container h-full py-4">
+                        <div class="side-nav-items-group pr-4 mb-4">
+                            <ul class="sidebar-nav-items">
+                                <li>
+                                    <ScrollLink href="#introduction" class="sidebar-nav-item" @target="#content">Introduction
+                                    </ScrollLink>
+                                </li>
+                                <li>
+                                    <ScrollLink href="#authentication" class="sidebar-nav-item" @target="#content">
+                                        Authentication</ScrollLink>
+                                </li>
+                                <li>
+                                    <ScrollLink href="#errors" class="sidebar-nav-item" @target="#content">Errors
+                                    </ScrollLink>
+                                </li>
+                                <li>
+                                    <ScrollLink href="#metadata" class="sidebar-nav-item" @target="#content">Metadata
+                                    </ScrollLink>
+                                </li>
+                            </ul>
+                        </div>
+                        <CpPanels class="sidebar-nav-panels" as |panels|>
+                            <panels.panel @open={{true}} as |panel|>
+                                <panel.toggle>
+                                    <span class="uppercase text-xs font-semibold">Core Resources</span>
+                                    <span>
+                                        {{!-- <FaIcon @icon="caret-right" @prefix="fas" /> --}}
+                                    </span>
+                                </panel.toggle>
+                                <panel.body>
+                                    <div class="side-nav-items-group pr-4 mb-4">
+                                        <ul class="sidebar-nav-items">
+                                            <li>
+                                                <ScrollLink href="#place" class="sidebar-nav-item" @expandable={{true}} @target="#content">Place</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#place_object" class="sidebar-nav-item" @target="#content">The place object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_place" class="sidebar-nav-item" @target="#content">Create a
+                                                            place</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_place" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            place</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_place" class="sidebar-nav-item" @target="#content">Update a
+                                                            place</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_place" class="sidebar-nav-item" @target="#content">Delete a
+                                                            place</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_places" class="sidebar-nav-item" @target="#content">List all
+                                                            places</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#query_places" class="sidebar-nav-item" @target="#content">Query
+                                                            places</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#service_area" class="sidebar-nav-item" @expandable={{true}} @target="#content">Service
+                                                    Area</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#service_area_object" class="sidebar-nav-item" @target="#content">The
+                                                            service area
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_service_area" class="sidebar-nav-item" @target="#content">Create
+                                                            a service
+                                                            area</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_service_area" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            service
+                                                            area</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_service_area" class="sidebar-nav-item" @target="#content">Update
+                                                            a service
+                                                            area</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_service_area" class="sidebar-nav-item" @target="#content">Delete
+                                                            a service
+                                                            area</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_service_areas" class="sidebar-nav-item" @target="#content">List
+                                                            all service
+                                                            areas</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#zone" class="sidebar-nav-item" @expandable={{true}} @target="#content">Zones</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#zone_object" class="sidebar-nav-item" @target="#content">The zone
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_zone" class="sidebar-nav-item" @target="#content">Create a
+                                                            zone</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_zone" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            zone</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_zone" class="sidebar-nav-item" @target="#content">Update a
+                                                            zone</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_zone" class="sidebar-nav-item" @target="#content">Delete a
+                                                            zone</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_zones" class="sidebar-nav-item" @target="#content">List all
+                                                            zones</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#contact" class="sidebar-nav-item" @expandable={{true}} @target="#content">Contacts</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#contact_object" class="sidebar-nav-item" @target="#content">The contact
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_contact" class="sidebar-nav-item" @target="#content">Create a
+                                                            contact</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_contact" class="sidebar-nav-item" @target="#content">Retrieve
+                                                            a contact</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_contact" class="sidebar-nav-item" @target="#content">Update a
+                                                            contact</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_contact" class="sidebar-nav-item" @target="#content">Delete a
+                                                            contact</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_contacts" class="sidebar-nav-item" @target="#content">List all
+                                                            contacts</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#vendor" class="sidebar-nav-item" @expandable={{true}} @target="#content">Vendors</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#vendor_object" class="sidebar-nav-item" @target="#content">The vendor
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_vendor" class="sidebar-nav-item" @target="#content">Create a
+                                                            vendor</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_vendor" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            vendor</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_vendor" class="sidebar-nav-item" @target="#content">Update a
+                                                            vendor</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_vendor" class="sidebar-nav-item" @target="#content">Delete a
+                                                            vendor</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_vendors" class="sidebar-nav-item" @target="#content">List all
+                                                            vendors</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#driver" class="sidebar-nav-item" @expandable={{true}} @target="#content">Driver</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#driver_object" class="sidebar-nav-item" @target="#content">The driver
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_driver" class="sidebar-nav-item" @target="#content">Create a
+                                                            driver</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_driver" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            driver</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_driver" class="sidebar-nav-item" @target="#content">Update a
+                                                            driver</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_driver" class="sidebar-nav-item" @target="#content">Delete a
+                                                            driver</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_drivers" class="sidebar-nav-item" @target="#content">List all
+                                                            drivers</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#fleets" class="sidebar-nav-item" @expandable={{true}} @target="#content">Fleet</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#fleet_object" class="sidebar-nav-item" @target="#content">The fleet
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_fleet" class="sidebar-nav-item" @target="#content">Create a
+                                                            fleet</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_fleet" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            fleet</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_fleet" class="sidebar-nav-item" @target="#content">Update a
+                                                            fleet</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_fleet" class="sidebar-nav-item" @target="#content">Delete a
+                                                            fleet</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_fleets" class="sidebar-nav-item" @target="#content">List all
+                                                            fleets</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#vehicle" class="sidebar-nav-item" @expandable={{true}} @target="#content">Vehicle</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#vehicle_object" class="sidebar-nav-item" @target="#content">The vehicle
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_vehicle" class="sidebar-nav-item" @target="#content">Create a
+                                                            vehicle</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_vehicle" class="sidebar-nav-item" @target="#content">Retrieve
+                                                            a vehicle</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_vehicle" class="sidebar-nav-item" @target="#content">Update a
+                                                            vehicle</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_vehicle" class="sidebar-nav-item" @target="#content">Delete a
+                                                            vehicle</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_vehicles" class="sidebar-nav-item" @target="#content">List all
+                                                            vehicles</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#payload" class="sidebar-nav-item" @expandable={{true}} @target="#content">Payload</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#payload_object" class="sidebar-nav-item" @target="#content">The payload
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_payload" class="sidebar-nav-item" @target="#content">Create a
+                                                            payload</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_payload" class="sidebar-nav-item" @target="#content">Retrieve
+                                                            a payload</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_payload" class="sidebar-nav-item" @target="#content">Update a
+                                                            payload</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_payload" class="sidebar-nav-item" @target="#content">Delete a
+                                                            payload</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#entity" class="sidebar-nav-item" @expandable={{true}} @target="#content">Entity</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#entity_object" class="sidebar-nav-item" @target="#content">The entity
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_entity" class="sidebar-nav-item" @target="#content">Create a
+                                                            entity</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_entity" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            entity</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_entity" class="sidebar-nav-item" @target="#content">Update a
+                                                            entity</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_entity" class="sidebar-nav-item" @target="#content">Delete a
+                                                            entity</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_entities" class="sidebar-nav-item" @target="#content">List all
+                                                            entities</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#service_rate" class="sidebar-nav-item" @expandable={{true}} @target="#content">Service
+                                                    Rate</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#service_rate_object" class="sidebar-nav-item" @target="#content">The
+                                                            service rate
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_service_rate" class="sidebar-nav-item" @target="#content">Create
+                                                            a service
+                                                            rate</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_service_rate" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            service
+                                                            rate</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_service_rate" class="sidebar-nav-item" @target="#content">Update
+                                                            a service
+                                                            rate</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_service_rate" class="sidebar-nav-item" @target="#content">Delete
+                                                            a service
+                                                            rate</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_service_rates" class="sidebar-nav-item" @target="#content">List
+                                                            all service
+                                                            rates</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#service_quote" class="sidebar-nav-item" @expandable={{true}} @target="#content">Service
+                                                    Quote</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#service_quote_object" class="sidebar-nav-item" @target="#content">The
+                                                            service quote
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_service_quotes" class="sidebar-nav-item" @target="#content">Retrieve service
+                                                            quotes</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#purchase_rate" class="sidebar-nav-item" @expandable={{true}} @target="#content">Purchase
+                                                    Rate</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#purchase_rate_object" class="sidebar-nav-item" @target="#content">The
+                                                            purchase rate
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_purchase_rate" class="sidebar-nav-item" @target="#content">Create a purchase
+                                                            rate</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_purchase_rate" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            purchase
+                                                            rate</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_purchase_rates" class="sidebar-nav-item" @target="#content">List
+                                                            all purchase
+                                                            rates</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#order" class="sidebar-nav-item" @expandable={{true}} @target="#content">Order</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#order_object" class="sidebar-nav-item" @target="#content">The order
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_order" class="sidebar-nav-item" @target="#content">Create a
+                                                            order</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_order" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            order</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_order" class="sidebar-nav-item" @target="#content">Update a
+                                                            order</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#dispatch_order" class="sidebar-nav-item" @target="#content">Dispatch an
+                                                            order</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#cancel_order" class="sidebar-nav-item" @target="#content">Cancel an
+                                                            order</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_orders" class="sidebar-nav-item" @target="#content">List all
+                                                            orders</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#tracking_number" class="sidebar-nav-item" @expandable={{true}} @target="#content">Tracking Number</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#tracking_number_object" class="sidebar-nav-item" @target="#content">The
+                                                            tracking number
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_tracking_number" class="sidebar-nav-item" @target="#content">Create a tracking
+                                                            number</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_tracking_number" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            tracking number</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_tracking_number" class="sidebar-nav-item" @target="#content">Update a tracking
+                                                            number</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_tracking_number" class="sidebar-nav-item" @target="#content">Delete a tracking
+                                                            number</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_tracking_numbers" class="sidebar-nav-item" @target="#content">List
+                                                            all tracking
+                                                            numbers</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#tracking_status" class="sidebar-nav-item" @expandable={{true}} @target="#content">Tracking Status</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#tracking_status_object" class="sidebar-nav-item" @target="#content">The
+                                                            tracking status
+                                                            object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_tracking_status" class="sidebar-nav-item" @target="#content">Create a tracking
+                                                            status</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_tracking_status" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            tracking status</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_tracking_status" class="sidebar-nav-item" @target="#content">Update a tracking
+                                                            status</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_tracking_status" class="sidebar-nav-item" @target="#content">Delete a tracking
+                                                            status</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_tracking_status" class="sidebar-nav-item" @target="#content">List
+                                                            all tracking
+                                                            statuss</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </panel.body>
+                            </panels.panel>
+                            <panels.panel @open={{true}} as |panel|>
+                                <panel.toggle>
+                                    <span class="uppercase text-sm font-semibold">Storefront</span>
+                                    <span>
+                                        {{!-- <FaIcon @icon="caret-right" @prefix="fas" /> --}}
+                                    </span>
+                                </panel.toggle>
+                                <panel.body>
+                                    <div class="side-nav-items-group pr-4 mb-4">
+                                        <ul class="sidebar-nav-items">
+                                            <li>
+                                                <ScrollLink href="#cart" class="sidebar-nav-item" @expandable={{true}} @target="#content">Cart</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#cart_object" class="sidebar-nav-item" @target="#content">The cart object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_cart" class="sidebar-nav-item" @target="#content">Retrieve cart</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#add_item_cart" class="sidebar-nav-item" @target="#content">Add item to cart</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_item_cart" class="sidebar-nav-item" @target="#content">Update item in cart</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#remove_item_cart" class="sidebar-nav-item" @target="#content">Remove item from cart</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#empty_cart" class="sidebar-nav-item" @target="#content">Empty cart</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#product" class="sidebar-nav-item" @expandable={{true}} @target="#content">Products</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#product_object" class="sidebar-nav-item" @target="#content">The product object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_product" class="sidebar-nav-item" @target="#content">Create a
+                                                            product</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_product" class="sidebar-nav-item" @target="#content">Retrieve a
+                                                            product</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_product" class="sidebar-nav-item" @target="#content">Update a
+                                                            product</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_product" class="sidebar-nav-item" @target="#content">Delete a
+                                                            product</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_products" class="sidebar-nav-item" @target="#content">List all
+                                                            products</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#query_products" class="sidebar-nav-item" @target="#content">Query
+                                                            products</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#category" class="sidebar-nav-item" @expandable={{true}} @target="#content">Category</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#category_object" class="sidebar-nav-item" @target="#content">The category object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_category" class="sidebar-nav-item" @target="#content">Create a category</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_category" class="sidebar-nav-item" @target="#content">Retrieve a category</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_category" class="sidebar-nav-item" @target="#content">Update a category</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_category" class="sidebar-nav-item" @target="#content">Delete a category</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_categories" class="sidebar-nav-item" @target="#content">List all categories</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#customer" class="sidebar-nav-item" @expandable={{true}} @target="#content">Customer</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#customer_object" class="sidebar-nav-item" @target="#content">The customer object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#customer_login" class="sidebar-nav-item" @target="#content">Authenticate a customer</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#customer_login_sms" class="sidebar-nav-item" @target="#content">Authenticate a customer via SMS</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#customer_verify_sms" class="sidebar-nav-item" @target="#content">Verify a SMS Code</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_customer" class="sidebar-nav-item" @target="#content">Retrieve a customer</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_customer" class="sidebar-nav-item" @target="#content">Update a customer</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_customer" class="sidebar-nav-item" @target="#content">Delete a customer</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_customers" class="sidebar-nav-item" @target="#content">List all customers</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#register_device" class="sidebar-nav-item" @target="#content">Register customer device</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_customer_places" class="sidebar-nav-item" @target="#content">List a customer saved places</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_customer_orders" class="sidebar-nav-item" @target="#content">List a customer orders</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#store" class="sidebar-nav-item" @expandable={{true}} @target="#content">Store</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#store_object" class="sidebar-nav-item" @target="#content">The store object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_store" class="sidebar-nav-item" @target="#content">Create a store</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_store" class="sidebar-nav-item" @target="#content">Retrieve a store</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_store" class="sidebar-nav-item" @target="#content">Update a store</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_store" class="sidebar-nav-item" @target="#content">Delete a store</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_stores" class="sidebar-nav-item" @target="#content">List all stores</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#store_location" class="sidebar-nav-item" @expandable={{true}} @target="#content">Store Locations</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#store_location_object" class="sidebar-nav-item" @target="#content">The store location object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#create_store_location" class="sidebar-nav-item" @target="#content">Create a store location</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_store_location" class="sidebar-nav-item" @target="#content">Retrieve a store location</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#update_store_location" class="sidebar-nav-item" @target="#content">Update a store location</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#delete_store_location" class="sidebar-nav-item" @target="#content">Delete a store location</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#list_store_locations" class="sidebar-nav-item" @target="#content">List all store locations</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#delivery_service_quote" class="sidebar-nav-item" @expandable={{true}} @target="#content">Delivery Service Quote</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#delivery_service_quote" class="sidebar-nav-item" @target="#content">The delivery service quote object</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#retrieve_from_cart" class="sidebar-nav-item" @target="#content">Retrieve delivery service quote from cart</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#checkout" class="sidebar-nav-item" @expandable={{true}} @target="#content">Checkout</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#generate_checkout_token" class="sidebar-nav-item" @target="#content">Generate a checkout token</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#capture_checkout" class="sidebar-nav-item" @target="#content">Capture checkout as order</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </panel.body>
+                            </panels.panel>
+                            <panels.panel @open={{true}} as |panel|>
+                                <panel.toggle>
+                                    <span class="uppercase text-sm font-semibold">Webhooks</span>
+                                    <span>
+                                        {{!-- <FaIcon @icon="caret-right" @prefix="fas" /> --}}
+                                    </span>
+                                </panel.toggle>
+                                <panel.body>
+                                    <div class="side-nav-items-group pr-4 mb-4">
+                                        <ul class="sidebar-nav-items">
+                                            <li>
+                                                <ScrollLink href="#lifecycle" class="sidebar-nav-item" @expandable={{true}} @target="#content">Lifecycle</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#lifecycle" class="sidebar-nav-item" @target="#content">Resource created</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#lifecycle" class="sidebar-nav-item" @target="#content">Resource updated</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#lifecycle" class="sidebar-nav-item" @target="#content">Resource deleted</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#order_events" class="sidebar-nav-item" @expandable={{true}} @target="#content">Orders</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#order_events" class="sidebar-nav-item" @target="#content">Order dispatched</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#order_events" class="sidebar-nav-item" @target="#content">Order dispatch failed</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#order_events" class="sidebar-nav-item" @target="#content">Order pinged</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#order_events" class="sidebar-nav-item" @target="#content">Order driver assigned</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ScrollLink href="#driver_events" class="sidebar-nav-item" @expandable={{true}} @target="#content">Drivers</ScrollLink>
+                                                <ul class="sidebar-nav-items">
+                                                    <li>
+                                                        <ScrollLink href="#order_events" class="sidebar-nav-item" @target="#content">Driver location updated</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#order_events" class="sidebar-nav-item" @target="#content">Driver vehicle assigned</ScrollLink>
+                                                    </li>
+                                                    <li>
+                                                        <ScrollLink href="#order_events" class="sidebar-nav-item" @target="#content">Driver order assigned</ScrollLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </panel.body>
+                            </panels.panel>
+                        </CpPanels>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+        <main id="content" class="col-span-10 overflow-y-auto">
+            {{outlet}}
+        </main>
+    </div>
+</div>

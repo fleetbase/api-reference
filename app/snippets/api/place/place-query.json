@@ -1,0 +1,24 @@
+// BEGIN-SNIPPET place-query
+[
+    {
+        "name": "Pike Place Market",
+        "latitude": 47.60927432121804,
+        "longitude": -122.34123141065002
+    },
+    {
+        "name": "Pike Place Fish Market",
+        "latitude": 47.60878878474859,
+        "longitude": -122.34019875526428
+    },
+    {
+        "name": "Pike Brewing Company",
+        "latitude": 47.608190975778136,
+        "longitude": -122.33966224323066
+    },
+    {
+        "name": "Rachel the Pig at Pike Place Market",
+        "latitude": 47.60881372341394,
+        "longitude": -122.34040803579761
+    }
+]
+// END-SNIPPET

@@ -1,0 +1,589 @@
+<section class="method first-of-group" id="payload">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Payload</h1>
+                <p>
+                    <code>Payload</code> objects represent a payload to be attached to an order. 
+                </p>
+                <p>
+                    Payload consist of all the information for an order. The pickup point, dropoff point, 
+                    as well as the entities of a payload, and additional information necessary for an order.
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="payload_object">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>The payload object</h1>
+            </div>
+            <div class="method-list">
+                <h5 class="method-list-title">
+                    Attributes
+                </h5>
+                <ul class="method-list-group">
+                    <li class="method-list-item" id="card_object-id">
+                        <h3 class="method-list-item-label">
+                            id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Unique identifier for the object.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            pickup
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>Place</code> object where the payload should be picked up.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            dropoff
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>Place</code> object where the payload should be dropped off.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            return
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>Place</code> object where the payload should be returned to if 
+                            the drop off cannot be completed.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            customer
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>Vendor</code> or <code>Contact</code> object the payload is for.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            meta
+                            <span class="method-list-item-validation">hash</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Set of key-value pairs that you can attach to an object. This can be useful for storing 
+                            additional information about the object in a structured format.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            cod_amount
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The cash on delivery amount that should be collected when the payload is dropped off.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            cod_currency
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The 3-letter ISO code currency of the cash on delivery amount.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            cod_payment_method
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The cash on delivery payment method, defaults to <code>cash</code>, but not limited 
+                           to <code>card</code>, <code>check</code>, or <code>bank_transfer</code> upon delivery.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            type
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The type of payload. This is typically aligned with the service type 
+                            such as "passenger", "parcel", or "task".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            created_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the payload was created.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            updated_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the payload was last updated.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="payload.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="create_payload">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Create a payload</h1>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                pickup
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Place</code> object where the payload should be picked up.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                dropoff
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Place</code> object where the payload should be dropped off.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The type of payload. This is typically aligned with the service type 
+                                such as "passenger", "parcel", or "task".
+                                <div>This should match the service rate type if payload must be delivered through <code>PurchaseRate</code> creation.</div>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                return
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Place</code> object where the payload should be returned to if 
+                                the drop off cannot be completed.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                customer
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Vendor</code> or <code>Contact</code> object the payload is for.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                meta
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Set of key-value pairs that you can attach to an object. This can be useful for storing 
+                                additional information about the object in a structured format.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_amount
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The cash on delivery amount that should be collected when the payload is dropped off.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_currency
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The 3-letter ISO code currency of the cash on delivery amount. 
+                               Required if "cod_amount" is set.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_payment_method
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The cash on delivery payment method, defaults to <code>cash</code>. Can either be 
+                               <code>cash</code>, <code>card</code>, <code>check</code>, or <code>bank_transfer</code>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">POST https://api.fleetbase.io/v1/payloads</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="POST /v1/payloads" @name="create-payload" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="payload.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="retrieve_payload">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Retrieve a payload</h1>
+                <p>
+                    This endpoint allows you to retrieve a payload object to view it's details.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the payload you want to retrieve.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/payloads/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/payloads" @name="retrieve-payload" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="payload.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="update_payload">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Update a payload</h1>
+                <p>
+                    You can update all properties of the Payload.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the payload you want to update.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                pickup
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Place</code> object where the payload should be picked up.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                dropoff
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Place</code> object where the payload should be dropped off.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The type of payload. This is typically aligned with the service type 
+                                such as "passenger", "parcel", or "task".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                return
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Place</code> object where the payload should be returned to if 
+                                the drop off cannot be completed.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                customer
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Vendor</code> or <code>Contact</code> object the payload is for.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                meta
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Set of key-value pairs that you can attach to an object. This can be useful for storing 
+                                additional information about the object in a structured format.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_amount
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The cash on delivery amount that should be collected when the payload is dropped off.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_currency
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The 3-letter ISO code currency of the cash on delivery amount. 
+                               Required if "cod_amount" is set.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_payment_method
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The cash on delivery payment method, defaults to <code>cash</code>. Can either be 
+                               <code>cash</code>, <code>card</code>, <code>check</code>, or <code>bank_transfer</code>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">PUT https://api.fleetbase.io/v1/payloads/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="PUT /v1/payloads" @name="update-payload" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="payload-updated.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="delete_payload">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Delete a payload</h1>
+                <p>
+                    Use this endpoint to delete a payload.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the payload you want to delete.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">DELETE https://api.fleetbase.io/v1/payloads/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="DELETE /v1/payloads" @name="delete-payload" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="payload-deleted.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="list_payloads">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>List all payloads</h1>
+                <p>
+                    This endpoint allows you to query payloads you have created, it also provides paginated results on all
+                    the payloads in your Fleetbase.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                query
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This parameter allows you to filter the results by their name.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                status
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter the payloads by their status.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter payloads by their type.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                limit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               A cursor for use in pagination. A limit on the number of objects to be returned. Limit can range between 1 and 100, 
+                                and the default is 10.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                offset
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                A cursor for use in pagination. A offset for the results, 
+                                when the offset is supplied the results will start from the offset.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                order_by
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                You can order the results by any property of the <code>Payload</code> object.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/payloads</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/payloads" @name="query-payload" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="payload.json" />
+            </div>
+        </div>
+    </div>
+</section>

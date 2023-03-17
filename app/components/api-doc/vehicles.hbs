@@ -1,0 +1,548 @@
+<section class="method first-of-group" id="vehicle">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Vehicle</h1>
+                <p>
+                    <code>Vehicle</code> objects are vehicles that can be assigned to drivers.
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="vehicle_object">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>The vehicle object</h1>
+            </div>
+            <div class="method-list">
+                <h5 class="method-list-title">
+                    Attributes
+                </h5>
+                <ul class="method-list-group">
+                    <li class="method-list-item" id="card_object-id">
+                        <h3 class="method-list-item-label">
+                            id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Unique identifier for the object.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            driver
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>Driver</code> assigned to the vehicle.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            name
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The name of the vehicle, typically composed of the year, make and model.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            make
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The make of the vehicle.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            model
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The model of the vehicle.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            year
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The year the vehicle was manufactured.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            trim
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The trim of the vehicle.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            type
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The type of vehicle.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            plate_number
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The plate number of the vehicle.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            vin
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The VIN (Vehicle Identification Number) of the vehicle.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            vin_data
+                            <span class="method-list-item-validation">json</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The VIN data returned from the VIN decoding.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            photo_url
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The URL to the photo of the vehicle.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            model_data
+                            <span class="method-list-item-validation">json</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           Information about the vehicle model provided by Fleetbase.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            status
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                           The status of the vehicle. valid options: "operational", "maintenance" or "decommissioned".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            created_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the vehicle was created.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            updated_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the vehicle was last updated.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="vehicle.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="create_vehicle">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Create a vehicle</h1>
+                <p>
+                    In order to create a vehicle you must provide the VIN number, Fleetbase will automatically decode the VIN 
+                    and pull the information on the vehicle.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                vin
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The VIN (Vehicle Identification Number) of the vehicle.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                driver
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Driver</code> to be assigned to the vehicle.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                year
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The year the vehicle was produced.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                make
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The vehicle make.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                model
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The vehicle model.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                trim
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The trim of the vehicle.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                plate_number
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The vehicle's plate number.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                status
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The status of the vehicle. valid options: "operational", "maintenance" or "decommissioned". 
+                                By default the status will be set to "operational".
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">POST https://api.fleetbase.io/v1/vehicles</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="POST /v1/vehicles" @name="create-vehicle" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="vehicle.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="retrieve_vehicle">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Retrieve a vehicle</h1>
+                <p>
+                    This endpoint allows you to retrieve a vehicle object to view it's details.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the vehicle you want to retrieve.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/vehicles/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/vehicles" @name="retrieve-vehicle" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="vehicle.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="update_vehicle">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Update a vehicle</h1>
+                <p>
+                    You can update the driver assigned, plate number, and status of the <code>Vehicle</code>.
+                </p>
+                <p>
+                    Vehicle's can only be assigned to one driver at a time, if a vehicle is re-assigned to another driver 
+                    then the last driver will no longer be assigned to the vehicle.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the vehicle you want to update.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                driver
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the <code>Driver</code> to be assigned to the vehicle.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                plate_number
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The vehicle's plate number.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                status
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The status of the vehicle. valid options: "operational", "maintenance" or "decommissioned". 
+                                By default the status will be set to "operational".
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">PUT https://api.fleetbase.io/v1/vehicles/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="PUT /v1/vehicles" @name="update-vehicle" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="vehicle-updated.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="delete_vehicle">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Delete a vehicle</h1>
+                <p>
+                    Use this endpoint to delete a vehicle.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the vehicle you want to delete.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">DELETE https://api.fleetbase.io/v1/vehicles/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="DELETE /v1/vehicles" @name="delete-vehicle" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="vehicle-deleted.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="list_vehicles">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>List all vehicles</h1>
+                <p>
+                    This endpoint allows you to query vehicles you have created, it also provides paginated results on all
+                    the vehicles in your Fleetbase.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                query
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This parameter allows you to filter the results by their name.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                status
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter the vehicles by their status.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter vehicles by their type.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                limit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               A cursor for use in pagination. A limit on the number of objects to be returned. Limit can range between 1 and 100, 
+                                and the default is 10.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                offset
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                A cursor for use in pagination. A offset for the results, 
+                                when the offset is supplied the results will start from the offset.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                order_by
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                You can order the results by any property of the <code>Vehicle</code> object.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/vehicles</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/vehicles" @name="query-vehicle" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="vehicle-list.json" />
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+// BEGIN-SNIPPET service-rate-updated
+{
+    "id": "service_54K3175",
+    "service_area": "",
+    "zone": "",
+    "service_name": "Standard Taxi",
+    "service_type": "passenger",
+    "base_fee": 200,
+    "per_km_flat_rate_fee": 0,
+    "algorithm": "(({distance}/1000)*55)+(({time}/60)*33)",
+    "rate_calculation_method": "algo",
+    "has_cod_fee": 0,
+    "cod_calculation_method": "",
+    "cod_flat_fee": 0,
+    "cod_percent": 0,
+    "has_peak_hours_fee": 1,
+    "peak_hours_calculation_method": "flat",
+    "peak_hours_flat_fee": 200,
+    "peak_hours_percent": 0,
+    "peak_hours_start": "17:00",
+    "peak_hours_end": "19:00",
+    "currency": "SGD",
+    "duration_terms": "",
+    "estimated_days": 0,
+    "created_at": "2018-06-07 10:31:20",
+    "updated_at": "2018-06-07 12:24:19"
+}
+// END-SNIPPET

@@ -1,0 +1,14 @@
+// BEGIN-SNIPPET contact-updated
+{
+    "id": "contact_x8RYdpl",
+    "name": "John Doe",
+    "title": "Mr",
+    "email": "john@exampleco.com",
+    "phone_number": "563-999-2222",
+    "phone_country_code": "1",
+    "type": "technician",
+    "slug": "john-doe",
+    "created_at": "2018-06-04 10:12:31",
+    "updated_at": "2018-06-04 10:30:31"
+}
+// END-SNIPPET

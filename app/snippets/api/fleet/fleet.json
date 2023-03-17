@@ -1,0 +1,11 @@
+// BEGIN-SNIPPET fleet
+{
+    "id": "fleet_xE4y5l",
+    "service_area": "",
+    "name": "Haulers",
+    "task": "fcl hauling",
+    "status": "active",
+    "updated_at": "2018-06-06 06:35:22",
+    "created_at": "2018-06-06 06:35:22"
+}
+// END-SNIPPET

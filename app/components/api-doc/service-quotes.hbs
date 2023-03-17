@@ -1,0 +1,215 @@
+<section class="method first-of-group" id="service_quote">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Service Quote</h1>
+                <p>
+                    <code>ServiceQuote</code> are objects that represent calculated <code>ServiceRate</code> objects based on the payload or pickup or dropoff points.
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="service_quote_object">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>The service quote object</h1>
+            </div>
+            <div class="method-list">
+                <h5 class="method-list-title">
+                    Attributes
+                </h5>
+                <ul class="method-list-group">
+                    <li class="method-list-item" id="card_object-id">
+                        <h3 class="method-list-item-label">
+                            id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Unique identifier for the object.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            service_rate
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>ServiceRate</code> object the quotation is for.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            request_id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The unique identifier for the request used to get quote.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            amount
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The amount of the service quote calculated using the service rate.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            currency
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The ISO-3 currency the rate amount is in.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            created_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the service-rate was created.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            updated_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the service-rate was last updated.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-quote.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="retrieve_service_quotes">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Retrieve service quotes</h1>
+                <p>
+                    This endpoint is used to get the <code>ServiceRate</code> quotes based on pickup point location and drop off point location,
+                    or payload.
+                </p>
+                <p>
+                    For some quotes such as parcel based, the payload must be included for calculation of the payload cost.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                payload
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The id of a <code>Payload</code> object, the payload type should match 
+                               the <code>service_type</code> of the rates being retrieved.
+                               <div>
+                                   When the <code>payload</code> is supplied the other parameters are not required.
+                               </div>
+                            </p>
+                        </li>
+                    	<li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                service_type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               The <code>service_type</code> to calculate the rates for. This required field is defined in all 
+                               <code>ServiceRate</code> objects.
+                                <div>
+                                    Required when <code>payload</code> is not supplied.
+                                </div>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                pickup
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The pickup location for the order. The pickup can either be the id of a <code>Place</code> object, 
+                                or latitude and longitude coordinates.<br><br>
+                                Acceptable coordinate formats can either be comma seperated latitude and longitude. <br>
+                                Example
+                                <code class="block w-full">latitude,longitude</code>
+                                <br>
+                                <br>
+                                Coordinates can also be supplied in an array format. <br>
+                                Example
+                                <code class="block w-full">
+                                    pickup[latitude]=latitude <br>
+                                    pickup[longitude]=longitude
+                                </code>
+                                <div>
+                                   Required when <code>payload</code> is not supplied.
+                                </div>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                dropoff
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The dropoff location for the order. The dropoff can either be the id of a <code>Place</code> object, 
+                                or latitude and longitude coordinates.<br><br>
+                                Acceptable coordinate formats can either be comma seperated latitude and longitude. <br>
+                                Example
+                                <code class="block w-full">latitude,longitude</code>
+                                <br>
+                                <br>
+                                Coordinates can also be supplied in an array format. <br>
+                                Example
+                                <code class="block w-full">
+                                    pickup[latitude]=latitude <br>
+                                    pickup[longitude]=longitude
+                                </code>
+                                <div>
+                                    Required when <code>payload</code> is not supplied.
+                                </div>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/service-quotes</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/service-quotes" @name="query-service-quote" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-quotes.json" />
+            </div>
+        </div>
+    </div>
+</section>

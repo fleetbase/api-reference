@@ -1,0 +1,982 @@
+<section class="method first-of-group" id="service_rate">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Service Rate</h1>
+                <p>
+                    <code>ServiceRate</code> are objects that represent how Fleetbase should calculate quotes for fleet services. 
+                </p>
+                <p>
+                    Service rate's are highly dynamic to fit all different types of services a fleet can provide. 
+                </p>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part"></div>
+            <div class="method-example-part"></div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="service_rate_object">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>The service rate object</h1>
+            </div>
+            <div class="method-list">
+                <h5 class="method-list-title">
+                    Attributes
+                </h5>
+                <ul class="method-list-group">
+                    <li class="method-list-item" id="card_object-id">
+                        <h3 class="method-list-item-label">
+                            id
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Unique identifier for the object.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            service_area
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>ServiceArea</code> object that this rate is limited to.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            zone
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The id of the <code>Zone</code> object that this rate is limited to (within the service area).
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            service_name
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The name of the service the rate is for. Example: "Parcel Delivery"
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            service_type
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The type of service this rate is for. <br>
+                            Default possible options: <br>
+                            <ul>
+                                <li>parcel - Parcel delivery</li>
+                                <li>passenger - Passenger pickup and dropoff</li>
+                                <li>task - Any type of task</li>
+                                <li>food - Food delivery</li>
+                                <li>shop - Shop or grocery pickup and dropoff</li>
+                            </ul>
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            base_fee
+                            <span class="method-list-item-label-details">optional</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The base fee is a base or minimum fee included to the start of the rate calculation.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            rate_calculation_method
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The calculation method the Service Rate should use to calculate the rate total. 
+                            Valid rate calculation methods: <br>
+                            <ul>
+                                <li><code>per_km</code> - this calculation method uses a fixed flat fee which is multiplied by the distance in kilometer.</li>
+                                <li><code>fixed_meter</code> - this calculation method uses a specific flat rate defined for each distance in meters.</li>
+                                <li><code>algo</code> - this method relies on an algorithm defined based on distance and time.</li>
+                            </ul>
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            per_km_flat_rate_fee
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            When the <code>rate_calculation_method</code> is set to <code>per_km</code>, the 
+                            flat rate to be charged on a per kilometer basis.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            meter_fees
+                            <span class="method-list-item-validation">array</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            If the <code>rate_calculation_method</code> is set to <code>fixed_meter</code>, the Service Rate 
+                            will return with an array of line item fee's with specific rare amount for each meter distance.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            algorithm
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            When the <code>rate_calculation_method</code> is set to <code>algo</code>, the 
+                            algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate 
+                            using the variables <code>{distance}</code> and <code>{time}</code>.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            has_cod_fee
+                            <span class="method-list-item-validation">boolean</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Explicitly set property that determines if the rate should calculate a cash on delivery fee. 
+                            Should be either "true" or "false".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            cod_calculation_method
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The calculation method used for cash on delivery, if <code>has_cod_fee</code> is set to true.
+                            Valid cash on delivery calculation methods: <br>
+                            <ul>
+                                <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
+                            </ul>
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            cod_flat_fee
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The flat cash on delivery fee amount for when the <code>cod_calculation_method</code> is set to "flat".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            cod_percent
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The percentage to calculate from the service rate total for the cash on delivery fee,
+                            used when <code>cod_calculation_method</code> is set to "percentage".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            has_peak_hours_fee
+                            <span class="method-list-item-validation">boolean</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Explicitly set property that determines if the rate should calculate a peak hours fee. 
+                            Should be either "true" or "false".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            peak_hours_calculation_method
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The calculation method used for peak hours, if <code>has_peak_hours_fee</code> is set to true.
+                            Valid peak hours calculation methods: <br>
+                            <ul>
+                                <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
+                            </ul>
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            peak_hours_flat_fee
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The flat peak hours fee amount for when the <code>peak_hours_calculation_method</code> is set to "flat".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            peak_hours_percent
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The percentage to calculate from the service rate total for the peak hours fee,
+                            used when <code>peak_hours_calculation_method</code> is set to "percentage".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            peak_hours_start
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The 24 hour time format (HH:mm) for when peak hours start for the rate. Ex: "16:30".
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            peak_hours_end
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The 24 hour time format (HH:mm) for when peak hours end for the rate. Ex: "18:30"
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            currency
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The 3-letter ISO code currency the rate will use for calculations.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            duration_terms
+                            <span class="method-list-item-validation">string</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Additional terms or notices about the service rate.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            estimated_days
+                            <span class="method-list-item-validation">integer</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            The estimated number of days the service takes to complete, for same-day this will be 0.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            created_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the service-rate was created.
+                        </p>
+                    </li>
+                    <li class="method-list-item">
+                        <h3 class="method-list-item-label">
+                            updated_at
+                            <span class="method-list-item-validation">datetime</span>
+                        </h3>
+                        <p class="method-list-item-description">
+                            Date and time the service-rate was last updated.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-rate.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="create_service_rate">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Create a service rate</h1>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                service_name
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The name of the service rate to be created.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                service_type
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The type of service the rate being created is for. Default possible options: <br><br>
+                                <ul>
+                                    <li>parcel - Parcel delivery</li>
+                                    <li>passenger - Passenger pickup and dropoff</li>
+                                    <li>task - Any type of task</li>
+                                    <li>food - Food delivery</li>
+                                    <li>shop - Shop or grocery pickup and dropoff</li>
+                                </ul>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                rate_calculation_method
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The calculation method the Service Rate should use to 
+                                calculate the rate total. Valid rate calculation methods: <br><br>
+                                <ul>
+                                    <li><code>per_km</code> - this calculation method uses a fixed flat fee which is multiplied by the distance in kilometer.</li>
+                                    <li><code>fixed_meter</code> - this calculation method uses a specific flat rate defined for each distance in meters.</li>
+                                    <li><code>algo</code> - this method relies on an algorithm defined based on distance and time.</li>
+                                </ul>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                currency
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The 3-letter ISO code currency the rate will use for calculations.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                base_fee
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Property that allows the rate to include a base or minimum fee to the start of the calculation. 
+                                The value should be in cents, for example if the flat fee is $2.00 USD per kilometer, 
+                                then the value should be "200".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                per_km_flat_rate_fee
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This property is required when the <code>rate_calculation_method</code> is set to "per_km". <br>
+                                The flat rate should be the amount in cents, for example if the flat fee is $2.00 USD per kilometer, 
+                                then the value should be "200". <br>The same is true no matter the currency, for example if the flat fee is 
+                                1300 MNT (Mongolian Tugrik), then the value will be "1300".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                meter_fees
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This property is required when the <code>rate_calculation_method</code> is set to "fixed_meter". <br>
+                                Supply a key value array consisting of the distance, and fee for the corresponding distance. 
+                                Distances must increment in linear order. 
+                                <a href="javascript:;" {{action (toggle "displayMeterFeeExample" this) on="click"}}>Toggle example</a>
+                                {{#if displayMeterFeeExample}}
+                                    <br><br>
+                                    <div class="method-example-part">
+                                        <span class="snippet-title">Example</span>
+                                        <CodeSnippet @name="example-meter-fees.sh" />
+                                    </div>
+                                {{/if}}
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                algorithm
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                When the <code>rate_calculation_method</code> is set to <code>algo</code>, the 
+                                algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate 
+                                using the variables <code>{distance}</code> and <code>{time}</code>. 
+                                <br>
+                                <ul>
+                                    <li>{distance} - is the distance between the pickup and dropoff in meters.</li>
+                                    <li>{time} - is the estimated time between the pickup and dropoff in seconds.</li>
+                                </ul><br>
+                                <div>Example</div>
+                                <code class="block">(({distance}/1000)*55)+(({time}/60)*33)</code>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                has_cod_fee
+                                <span class="method-list-item-validation">boolean</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Explicitly set property that determines if the rate should calculate a cash on delivery fee. 
+                                Should be either "true" or "false". Defaults to false.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_calculation_method
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The calculation method used for cash on delivery, required if <code>has_cod_fee</code> is set to true.
+                                Valid cash on delivery calculation methods: <br>
+                                <ul>
+                                    <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                    <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
+                                </ul>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_flat_fee
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The flat cash on delivery fee amount, 
+                                required when the <code>cod_calculation_method</code> is set to "flat".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_percent
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The percentage to calculate from the service rate total for the cash on delivery fee,
+                                required when <code>cod_calculation_method</code> is set to "percentage".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                has_peak_hours_fee
+                                <span class="method-list-item-validation">boolean</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Explicitly set property that determines if the rate should calculate a peak hours fee. 
+                                Should be either "true" or "false". Defaults to false.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_calculation_method
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The calculation method used for peak hours, required when <code>has_peak_hours_fee</code> is set to true.
+                                Valid peak hours calculation methods: <br>
+                                <ul>
+                                    <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                    <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
+                                </ul>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_flat_fee
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The flat peak hours fee amount, required when the <code>peak_hours_calculation_method</code> is set to "flat".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_percent
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The percentage to calculate from the service rate total for the peak hours fee,
+                                required when <code>peak_hours_calculation_method</code> is set to "percentage".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_start
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The 24 hour time format (HH:mm), required for peak hours. Ex: "16:30".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_end
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The 24 hour time format (HH:mm), required for peak hours. Ex: "18:30"
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                duration_terms
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Additional terms or notices about the service rate.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                estimated_days
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The estimated number of days the service takes to complete, for same-day this will be 0.
+                                This will default to 0, if nothing is set.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">POST https://api.fleetbase.io/v1/service-rates</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="POST /v1/service-rates" @name="create-service-rate" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-rate.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="retrieve_service_rate">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Retrieve a service rate</h1>
+                <p>
+                    This endpoint allows you to retrieve a service-rate object to view it's details.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the service-rate you want to retrieve.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/service-rates/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/service-rates" @name="retrieve-service-rate" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-rate.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="update_service_rate">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Update a service rate</h1>
+                <p>
+                    You can update your service rate, with the exception you cannot change the <code>service_type</code> or 
+                    change the method of how the rate is calculated.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the service rate you want to update.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                service_name
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The name of the service rate to be created.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                base_fee
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Property that allows the rate to include a base or minimum fee to the start of the calculation. 
+                                The value should be in cents, for example if the flat fee is $2.00 USD per kilometer, 
+                                then the value should be "200".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                per_km_flat_rate_fee
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This property is required when the <code>rate_calculation_method</code> is set to "by_km". <br>
+                                The flat rate should be the amount in cents, for example if the flat fee is $2.00 USD per kilometer, 
+                                then the value should be "200". <br>The same is true no matter the currency, for example if the flat fee is 
+                                1300 MNT (Mongolian Tugrik), then the value will be "1300".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                km_fees
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This property is required when the <code>rate_calculation_method</code> is set to "by_km". <br>
+                                Supply a key value array consisting of the distance, and fee for the corresponding distance. 
+                                Distances must increment in linear order. 
+                                <a href="javascript:;" {{action (toggle "displayKmFeeExample" this) on="click"}}>Toggle example</a>
+                                {{#if displayKmFeeExample}}
+                                    <br><br>
+                                    <div class="method-example-part">
+                                        <span class="snippet-title">Example</span>
+                                        <CodeSnippet @name="example-km-fees.sh" />
+                                    </div>
+                                {{/if}}
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                algorithm
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                When the <code>rate_calculation_method</code> is set to <code>algo</code>, the 
+                                algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate 
+                                using the variables <code>{distance}</code> and <code>{time}</code>. 
+                                <br>
+                                <ul>
+                                    <li>{distance} - is the distance between the pickup and dropoff in meters.</li>
+                                    <li>{time} - is the estimated time between the pickup and dropoff in seconds.</li>
+                                </ul><br>
+                                <div>Example</div>
+                                <code class="block">(({distance}/1000)*55)+(({time}/60)*33)</code>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                has_cod_fee
+                                <span class="method-list-item-validation">boolean</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Explicitly set property that determines if the rate should calculate a cash on delivery fee. 
+                                Should be either "true" or "false". Defaults to false.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_calculation_method
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The calculation method used for cash on delivery, required if <code>has_cod_fee</code> is set to true.
+                                Valid cash on delivery calculation methods: <br>
+                                <ul>
+                                    <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                    <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
+                                </ul>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_flat_fee
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The flat cash on delivery fee amount, 
+                                required when the <code>cod_calculation_method</code> is set to "flat".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                cod_percent
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The percentage to calculate from the service rate total for the cash on delivery fee,
+                                required when <code>cod_calculation_method</code> is set to "percentage".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                has_peak_hours_fee
+                                <span class="method-list-item-validation">boolean</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Explicitly set property that determines if the rate should calculate a peak hours fee. 
+                                Should be either "true" or "false". Defaults to false.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_calculation_method
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The calculation method used for peak hours, required when <code>has_peak_hours_fee</code> is set to true.
+                                Valid peak hours calculation methods: <br>
+                                <ul>
+                                    <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                    <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
+                                </ul>
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_flat_fee
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The flat peak hours fee amount, required when the <code>peak_hours_calculation_method</code> is set to "flat".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_percent
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The percentage to calculate from the service rate total for the peak hours fee,
+                                required when <code>peak_hours_calculation_method</code> is set to "percentage".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_start
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The 24 hour time format (HH:mm), required for peak hours. Ex: "16:30".
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                peak_hours_end
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The 24 hour time format (HH:mm), required for peak hours. Ex: "18:30"
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                duration_terms
+                                <span class="method-list-item-validation">string</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                Additional terms or notices about the service rate.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                estimated_days
+                                <span class="method-list-item-validation">integer</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The estimated number of days the service takes to complete, for same-day this will be 0.
+                                This will default to 0, if nothing is set.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">PUT https://api.fleetbase.io/v1/service-rates/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="PUT /v1/service-rates" @name="update-service-rate" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-rate-updated.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="delete_service_rate">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>Delete a service rate</h1>
+                <p>
+                    Use this endpoint to delete a service-rate.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                id
+                                <span class="required">required</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                The id of the service-rate you want to delete.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">DELETE https://api.fleetbase.io/v1/service-rates/{id}</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="DELETE /v1/service-rates" @name="delete-service-rate" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-rate-deleted.json" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method" id="list_service_rates">
+    <div class="method-area">
+        <div class="method-copy">
+            <div class="method-copy-padding">
+                <h1>List all service rates</h1>
+                <p>
+                    This endpoint allows you to query service-rates you have created, it also provides paginated results on all
+                    the service rates in your Fleetbase.
+                </p>
+                <div class="method-list">
+                    <h5 class="method-list-title">
+                        Arguments
+                    </h5>
+                    <ul class="method-list-group">
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                query
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                This parameter allows you to filter the results by name.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                service_type
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter service rates by type.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                currency
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               Filter service rates by currency.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                limit
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                               A cursor for use in pagination. A limit on the number of objects to be returned. Limit can range between 1 and 100, 
+                                and the default is 10.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                offset
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                A cursor for use in pagination. A offset for the results, 
+                                when the offset is supplied the results will start from the offset.
+                            </p>
+                        </li>
+                        <li class="method-list-item">
+                            <h3 class="method-list-item-label">
+                                order_by
+                                <span class="method-list-item-label-details">optional</span>
+                            </h3>
+                            <p class="method-list-item-description">
+                                You can order the results by any property of the <code>Service Rate</code> object.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="method-example">
+            <div class="method-example-part">
+                <div class="method-example-declaration">
+                    <pre class="language-none"><code class="language-none">GET https://api.fleetbase.io/v1/service-rates</code></pre>
+                </div>
+            </div>
+            <div class="method-example-part">
+                <span class="snippet-title">Example Request</span>
+                <SdkCodeSnippet @title="GET /v1/service-rates" @name="query-service-rate" @lang={{@lang}} @onLanguageChange={{@onLanguageChange}} />
+            </div>
+            <div class="method-example-part method-panel">
+                <span class="snippet-title">Example Response</span>
+                <CodeSnippet @name="service-rate-list.json" />
+            </div>
+        </div>
+    </div>
+</section>

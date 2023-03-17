@@ -1,0 +1,15 @@
+<div class="code-snippet-toggle border border-gray-700 rounded-md shadow-sm overflow-hidden" ...attributes>
+    <div class="header rounded-t-md bg-gray-700 flex items-center justify-between py-2 px-4">
+        <div class="text-sm font-mono {{@titleClass}}">
+            {{@title}}
+        </div>
+        <div class="flex items-center">
+            <Select class="h-auto py-0" @value={{this.lang}} @options={{this.languages}} @optionLabel="name" @optionValue="value" @onSelect={{this.onChangeLanguage}} {{on "change" this.watchChange}} />
+        </div>
+    </div>
+    <div class="body bg-gray-700 rounded-b-md">
+        {{#let (get-code-snippet this.snippetName) as |snippet|}}
+            <CodeBlock @code={{snippet.source}} @language={{this.lang}} />
+        {{/let}}
+    </div>
+</div>

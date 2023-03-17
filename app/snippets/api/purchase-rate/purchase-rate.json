@@ -1,0 +1,11 @@
+// BEGIN-SNIPPET purchase-rate
+{
+    "id": "rate_n3Rl7M2",
+    "customer": "",
+    "order": "order_lZKNkJA",
+    "service_quote": "quote_mkQyZ16",
+    "status": "success",
+    "updated_at": "2018-06-10 09:59:41",
+    "created_at": "2018-06-10 09:59:41"
+}
+// END-SNIPPET

@@ -1,0 +1,31 @@
+// BEGIN-SNIPPET fleet-list
+[
+    {
+        "id": "fleet_xE4y5l",
+        "service_area": "",
+        "name": "Elite Hauliers Group",
+        "task": "fcl hauling",
+        "status": "active",
+        "created_at": "2018-06-06 06:35:22",
+        "updated_at": "2018-06-06 06:43:19"
+    },
+    {
+        "id": "fleet_q5zDA7x",
+        "service_area": "",
+        "name": "Parcel Fleet",
+        "task": "package delivery",
+        "status": "active",
+        "created_at": "2018-06-06 06:34:49",
+        "updated_at": "2018-06-06 06:34:49"
+    },
+    {
+        "id": "fleet_nZ70Pvl",
+        "service_area": "",
+        "name": "Food Delivery Force",
+        "task": "food delivery",
+        "status": "active",
+        "created_at": "2018-06-06 06:33:50",
+        "updated_at": "2018-06-06 06:33:50"
+    }
+]
+// END-SNIPPET

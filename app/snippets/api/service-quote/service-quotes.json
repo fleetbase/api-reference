@@ -1,0 +1,31 @@
+// BEGIN-SNIPPET service-quotes
+[
+    {
+        "id": "quote_ymx2pO5",
+        "service_rate": "service_1g5ZvgY",
+        "request_id": "request_N2mQ4Rj",
+        "amount": 400,
+        "currency": "SGD",
+        "created_at": "2018-06-08 00:24:05",
+        "updated_at": "2018-06-08 00:24:05"
+    },
+    {
+        "id": "quote_18pJoQK",
+        "service_rate": "service_jVVa7dp",
+        "request_id": "request_N2mQ4Rj",
+        "amount": 367,
+        "currency": "SGD",
+        "created_at": "2018-06-08 00:24:05",
+        "updated_at": "2018-06-08 00:24:05"
+    },
+    {
+        "id": "quote_klvPnZY",
+        "service_rate": "service_54K3175",
+        "request_id": "request_N2mQ4Rj",
+        "amount": 610,
+        "currency": "SGD",
+        "created_at": "2018-06-08 00:24:05",
+        "updated_at": "2018-06-08 00:24:05"
+    }
+]
+// END-SNIPPET

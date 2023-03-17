@@ -1,0 +1,23 @@
+// BEGIN-SNIPPET category-updated
+{
+    "id": "category_zEd9Vz5",
+    "name": "SPACE NEEDLE",
+    "street1": "400 BROAD ST",
+    "street2": "",
+    "city": "SEATTLE",
+    "province": "WA",
+    "postal_code": "98109",
+    "neighborhood": "LOWER QUEEN ANNE",
+    "district": "KINNG COUNTY",
+    "building": "SEATTLE SPACE NEEDLE",
+    "security_access_code": "",
+    "country": "US",
+    "latitude": "47.6204232",
+    "longitude": "-122.34935530000001",
+    "phone_number": "",
+    "phone_country_code": "",
+    "type": "ROOFTOP",
+    "created_at": "2018-01-01 12:55:21",
+    "updated_at": "2018-01-01 12:55:21"
+}
+// END-SNIPPET

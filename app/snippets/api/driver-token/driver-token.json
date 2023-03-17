@@ -1,0 +1,11 @@
+// BEGIN-SNIPPET driver-token
+{
+    "id": "driver_token_zpJDNge",
+    "country": "SG",
+    "token": "67701",
+    "expires_at": 1528267375,
+    "status": "pending",
+    "updated_at": "2018-06-06 05:42:55",
+    "created_at": "2018-06-06 05:42:55"
+}
+// END-SNIPPET

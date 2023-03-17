@@ -1,0 +1,12 @@
+// BEGIN-SNIPPET tracking-number
+{
+    "id": "sa_877R5B9",
+    "name": "Charlotte, NC",
+    "type": "city",
+    "latitude": "35.2270869",
+    "longitude": "-80.8431267",
+    "status": "active",
+    "updated_at": "2018-01-01 01:05:19",
+    "created_at": "2018-01-01 01:05:19"
+}
+// END-SNIPPET

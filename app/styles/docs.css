@@ -1,0 +1,284 @@
+/** docs **/
+#api-reference {
+    font-family: 'Inter', sans-serif;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior: none;
+    scroll-behavior: smooth;
+    @apply overflow-x-hidden antialiased leading-tight text-gray-100 bg-gray-900;
+}
+
+.api-docs-container nav[role='navigation'] {
+    & .cp-Panels .cp-Panel .cp-Panel-toggle {
+        @apply flex items-center justify-between px-6 pb-1 uppercase text-sm text-gray-100 font-semibold transition-all mb-1;
+
+        & span {
+            @apply text-xs text-gray-200 font-semibold uppercase transition-all;
+        }
+
+        &:hover,
+        &:hover span {
+            @apply text-white;
+        }
+
+        & svg {
+            @apply mr-2 text-gray-400;
+            transition: all 0.1s linear;
+        }
+
+        &.cp-is-open {
+            & svg {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    & ul.sidebar-nav-items li a {
+        @apply transition-all rounded-r-md text-gray-400 px-6 py-1 flex w-full text-sm;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &.expandable {
+            /* &.expanded {
+                @apply font-semibold text-sky-400 bg-gray-700;
+            } */
+
+            & + ul.sidebar-nav-items {
+                margin-bottom: 0.25rem;
+                opacity: 0;
+                display: none;
+            }
+
+            &.expanded + ul.sidebar-nav-items {
+                opacity: 1;
+                display: block;
+                & a.sidebar-nav-item {
+                    padding-left: 2rem;
+                }
+            }
+        }
+
+        &.active,
+        &.active:hover {
+            @apply bg-gray-800 text-sky-400 font-semibold;
+        }
+
+        &:hover {
+            @apply text-white;
+        }
+    }
+}
+
+.api-docs-container #content {
+    & section.method {
+        @apply flex items-center justify-center border-b border-gray-700;
+        padding: 5vw;
+
+        & .method-area {
+            @apply grid grid-cols-2 gap-2 w-full;
+        }
+    }
+}
+
+/** code-snippet-toggle **/
+.code-snippet-toggle {
+    & select.form-select {
+        border: 0;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    & .body > pre {
+        margin: 0;
+        background: transparent;
+        border-radius: 0;
+    }
+}
+
+/** api reference **/
+.api-docs-container .method {
+    & > .method-area > .method-copy {
+        @apply pr-4;
+    }
+
+    & .method-example .method-example-declaration {
+        @apply mb-6;
+        & pre.language-none {
+            @apply text-sm font-mono bg-gray-800 text-gray-200;
+        }
+    }
+
+    & .method-example .method-example-part {
+        @apply mb-6;
+
+        & .snippet-title {
+            @apply hidden;
+        }
+
+        &.method-panel {
+            @apply border border-gray-700 rounded-md shadow-sm;
+
+            & > .method-example-declaration {
+                @apply mb-0;
+                & pre.language-none {
+                    @apply m-0 bg-transparent p-4 bg-gray-800;
+                }
+            }
+
+            & > .snippet-title {
+                @apply font-mono text-sm rounded-t-md bg-gray-700 flex items-center justify-between px-4 py-2;
+            }
+
+            & > div.method-panel-body,
+            & > pre[class*='language-'] {
+                @apply rounded-b-md rounded-t-none m-0;
+            }
+
+            & > div.method-panel-body {
+                @apply bg-gray-800;
+            }
+        }
+    }
+
+    & :not(pre) > code[class*='language-'],
+    & pre[class*='language-'] {
+        @apply bg-gray-800 text-sm;
+    }
+
+    & .token.property,
+    & .token.tag,
+    & .token.constant,
+    & .token.symbol,
+    & .token.deleted {
+        @apply text-gray-300;
+    }
+
+    & .token.selector,
+    & .token.attr-name,
+    & .token.string,
+    & .token.char,
+    & .token.builtin,
+    & .token.inserted {
+        @apply text-sky-400;
+    }
+
+    & .method-copy-padding {
+        & h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+        }
+
+        & p {
+            @apply text-gray-100 mb-10;
+        }
+    }
+
+    & code.language-undefined {
+        @apply border border-gray-100 px-1 rounded-md bg-transparent text-xs font-mono;
+        box-shadow: inset 0 1px 2px 0 rgba(220, 220, 220, 0.15);
+    }
+
+    & .method-list {
+        & .method-list-title {
+            @apply text-base font-semibold px-0 py-4 border-b border-gray-700;
+        }
+
+        & .method-list-item {
+            @apply border-b border-gray-700 py-2;
+            & .method-list-item-label {
+                @apply font-mono font-semibold mr-1 text-sm;
+
+                & .method-list-item-validation {
+                    @apply text-xs font-sans text-gray-600;
+                }
+
+                & .method-list-item-label-details {
+                    @apply text-xs font-sans text-gray-600;
+                }
+
+                & .required {
+                    @apply text-xs font-sans text-red-500;
+                }
+            }
+
+            & .method-list-item-description {
+                @apply py-2 text-sm text-gray-200;
+                margin: 0 !important;
+            }
+
+            &:last-child {
+                @apply border-b-0;
+            }
+        }
+    }
+
+    & a {
+        @apply text-sky-200 underline;
+    }
+}
+
+body[data-theme='dark'] .api-docs-container .method {
+    & .method-copy-padding {
+        & p {
+            @apply text-gray-100;
+        }
+    }
+
+    & .method-list-item {
+        & .method-list-item-label {
+            & .method-list-item-validation {
+                @apply text-gray-500;
+            }
+        }
+    }
+
+    & code.language-undefined {
+        @apply border-gray-700;
+    }
+}
+
+.code-example-button {
+    @apply cursor-pointer text-sm rounded-full flex items-center text-center bg-transparent text-sky-100 px-4 py-2 border border-transparent;
+
+    &:hover {
+        @apply bg-gray-800 text-white border-sky-100;
+    }
+
+    &.active {
+        @apply bg-gray-800 text-white border-sky-400;
+    }
+}
+
+.sdk-example-widget {
+    & :not(pre) > code[class*='language-'],
+    & pre[class*='language-'] {
+        background: transparent;
+    }
+
+    & code[class*='language-'],
+    & pre[class*='language-'] {
+        font-size: 0.8rem;
+    }
+
+    & .features-home-examples {
+        height: 550px;
+
+        & .example-nav-container {
+            width: 100%;
+            overflow-x: scroll;
+
+            & .example-nav {
+                width: 100%;
+                overflow-x: scroll;
+
+                & .code-example-button {
+                    white-space: nowrap !important;
+                    overflow: initial !important;
+                    text-overflow: initial !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+// BEGIN-SNIPPET contact
+{
+    "id": "contact_x8RYdpl",
+    "name": "John Doe",
+    "title": "Mr",
+    "email": "john@exampleco.com",
+    "phone_number": "563-920-4264",
+    "phone_country_code": "1",
+    "type": "technician",
+    "slug": "john-doe",
+    "updated_at": "2018-06-04 10:12:31",
+    "created_at": "2018-06-04 10:12:31"
+}
+// END-SNIPPET
