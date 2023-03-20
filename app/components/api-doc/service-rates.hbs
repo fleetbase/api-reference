@@ -4,10 +4,10 @@
             <div class="method-copy-padding">
                 <h1>Service Rate</h1>
                 <p>
-                    <code>ServiceRate</code> are objects that represent how Fleetbase should calculate quotes for fleet services. 
+                    <code>ServiceRate</code> are objects that represent how Fleetbase should calculate quotes for fleet services.
                 </p>
                 <p>
-                    Service rate's are highly dynamic to fit all different types of services a fleet can provide. 
+                    Service rate's are highly dynamic to fit all different types of services a fleet can provide.
                 </p>
             </div>
         </div>
@@ -73,13 +73,13 @@
                         <p class="method-list-item-description">
                             The type of service this rate is for. <br>
                             Default possible options: <br>
-                            <ul>
-                                <li>parcel - Parcel delivery</li>
-                                <li>passenger - Passenger pickup and dropoff</li>
-                                <li>task - Any type of task</li>
-                                <li>food - Food delivery</li>
-                                <li>shop - Shop or grocery pickup and dropoff</li>
-                            </ul>
+                        <ul>
+                            <li>parcel - Parcel delivery</li>
+                            <li>passenger - Passenger pickup and dropoff</li>
+                            <li>task - Any type of task</li>
+                            <li>food - Food delivery</li>
+                            <li>shop - Shop or grocery pickup and dropoff</li>
+                        </ul>
                         </p>
                     </li>
                     <li class="method-list-item">
@@ -97,13 +97,13 @@
                             <span class="method-list-item-validation">string</span>
                         </h3>
                         <p class="method-list-item-description">
-                            The calculation method the Service Rate should use to calculate the rate total. 
+                            The calculation method the Service Rate should use to calculate the rate total.
                             Valid rate calculation methods: <br>
-                            <ul>
-                                <li><code>per_km</code> - this calculation method uses a fixed flat fee which is multiplied by the distance in kilometer.</li>
-                                <li><code>fixed_meter</code> - this calculation method uses a specific flat rate defined for each distance in meters.</li>
-                                <li><code>algo</code> - this method relies on an algorithm defined based on distance and time.</li>
-                            </ul>
+                        <ul>
+                            <li><code>per_km</code> - this calculation method uses a fixed flat fee which is multiplied by the distance in kilometer.</li>
+                            <li><code>fixed_meter</code> - this calculation method uses a specific flat rate defined for each distance in meters.</li>
+                            <li><code>algo</code> - this method relies on an algorithm defined based on distance and time.</li>
+                        </ul>
                         </p>
                     </li>
                     <li class="method-list-item">
@@ -112,7 +112,7 @@
                             <span class="method-list-item-validation">integer</span>
                         </h3>
                         <p class="method-list-item-description">
-                            When the <code>rate_calculation_method</code> is set to <code>per_km</code>, the 
+                            When the <code>rate_calculation_method</code> is set to <code>per_km</code>, the
                             flat rate to be charged on a per kilometer basis.
                         </p>
                     </li>
@@ -122,7 +122,7 @@
                             <span class="method-list-item-validation">array</span>
                         </h3>
                         <p class="method-list-item-description">
-                            If the <code>rate_calculation_method</code> is set to <code>fixed_meter</code>, the Service Rate 
+                            If the <code>rate_calculation_method</code> is set to <code>fixed_meter</code>, the Service Rate
                             will return with an array of line item fee's with specific rare amount for each meter distance.
                         </p>
                     </li>
@@ -132,8 +132,8 @@
                             <span class="method-list-item-validation">string</span>
                         </h3>
                         <p class="method-list-item-description">
-                            When the <code>rate_calculation_method</code> is set to <code>algo</code>, the 
-                            algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate 
+                            When the <code>rate_calculation_method</code> is set to <code>algo</code>, the
+                            algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate
                             using the variables <code>{distance}</code> and <code>{time}</code>.
                         </p>
                     </li>
@@ -143,7 +143,7 @@
                             <span class="method-list-item-validation">boolean</span>
                         </h3>
                         <p class="method-list-item-description">
-                            Explicitly set property that determines if the rate should calculate a cash on delivery fee. 
+                            Explicitly set property that determines if the rate should calculate a cash on delivery fee.
                             Should be either "true" or "false".
                         </p>
                     </li>
@@ -155,10 +155,10 @@
                         <p class="method-list-item-description">
                             The calculation method used for cash on delivery, if <code>has_cod_fee</code> is set to true.
                             Valid cash on delivery calculation methods: <br>
-                            <ul>
-                                <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
-                                <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
-                            </ul>
+                        <ul>
+                            <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                            <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
+                        </ul>
                         </p>
                     </li>
                     <li class="method-list-item">
@@ -186,7 +186,7 @@
                             <span class="method-list-item-validation">boolean</span>
                         </h3>
                         <p class="method-list-item-description">
-                            Explicitly set property that determines if the rate should calculate a peak hours fee. 
+                            Explicitly set property that determines if the rate should calculate a peak hours fee.
                             Should be either "true" or "false".
                         </p>
                     </li>
@@ -198,10 +198,10 @@
                         <p class="method-list-item-description">
                             The calculation method used for peak hours, if <code>has_peak_hours_fee</code> is set to true.
                             Valid peak hours calculation methods: <br>
-                            <ul>
-                                <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
-                                <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
-                            </ul>
+                        <ul>
+                            <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                            <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
+                        </ul>
                         </p>
                     </li>
                     <li class="method-list-item">
@@ -324,13 +324,13 @@
                             </h3>
                             <p class="method-list-item-description">
                                 The type of service the rate being created is for. Default possible options: <br><br>
-                                <ul>
-                                    <li>parcel - Parcel delivery</li>
-                                    <li>passenger - Passenger pickup and dropoff</li>
-                                    <li>task - Any type of task</li>
-                                    <li>food - Food delivery</li>
-                                    <li>shop - Shop or grocery pickup and dropoff</li>
-                                </ul>
+                            <ul>
+                                <li>parcel - Parcel delivery</li>
+                                <li>passenger - Passenger pickup and dropoff</li>
+                                <li>task - Any type of task</li>
+                                <li>food - Food delivery</li>
+                                <li>shop - Shop or grocery pickup and dropoff</li>
+                            </ul>
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -339,13 +339,13 @@
                                 <span class="required">required</span>
                             </h3>
                             <p class="method-list-item-description">
-                                The calculation method the Service Rate should use to 
+                                The calculation method the Service Rate should use to
                                 calculate the rate total. Valid rate calculation methods: <br><br>
-                                <ul>
-                                    <li><code>per_km</code> - this calculation method uses a fixed flat fee which is multiplied by the distance in kilometer.</li>
-                                    <li><code>fixed_meter</code> - this calculation method uses a specific flat rate defined for each distance in meters.</li>
-                                    <li><code>algo</code> - this method relies on an algorithm defined based on distance and time.</li>
-                                </ul>
+                            <ul>
+                                <li><code>per_km</code> - this calculation method uses a fixed flat fee which is multiplied by the distance in kilometer.</li>
+                                <li><code>fixed_meter</code> - this calculation method uses a specific flat rate defined for each distance in meters.</li>
+                                <li><code>algo</code> - this method relies on an algorithm defined based on distance and time.</li>
+                            </ul>
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -363,8 +363,8 @@
                                 <span class="method-list-item-label-details">optional</span>
                             </h3>
                             <p class="method-list-item-description">
-                                Property that allows the rate to include a base or minimum fee to the start of the calculation. 
-                                The value should be in cents, for example if the flat fee is $2.00 USD per kilometer, 
+                                Property that allows the rate to include a base or minimum fee to the start of the calculation.
+                                The value should be in cents, for example if the flat fee is $2.00 USD per kilometer,
                                 then the value should be "200".
                             </p>
                         </li>
@@ -375,8 +375,8 @@
                             </h3>
                             <p class="method-list-item-description">
                                 This property is required when the <code>rate_calculation_method</code> is set to "per_km". <br>
-                                The flat rate should be the amount in cents, for example if the flat fee is $2.00 USD per kilometer, 
-                                then the value should be "200". <br>The same is true no matter the currency, for example if the flat fee is 
+                                The flat rate should be the amount in cents, for example if the flat fee is $2.00 USD per kilometer,
+                                then the value should be "200". <br>The same is true no matter the currency, for example if the flat fee is
                                 1300 MNT (Mongolian Tugrik), then the value will be "1300".
                             </p>
                         </li>
@@ -387,10 +387,10 @@
                             </h3>
                             <p class="method-list-item-description">
                                 This property is required when the <code>rate_calculation_method</code> is set to "fixed_meter". <br>
-                                Supply a key value array consisting of the distance, and fee for the corresponding distance. 
-                                Distances must increment in linear order. 
-                                <a href="javascript:;" {{action (toggle "displayMeterFeeExample" this) on="click"}}>Toggle example</a>
-                                {{#if displayMeterFeeExample}}
+                                Supply a key value array consisting of the distance, and fee for the corresponding distance.
+                                Distances must increment in linear order.
+                                <a href="javascript:;" {{on "click" (fn (toggle "displayMeterFeeExample" this))}}>Toggle example</a>
+                                {{#if this.displayMeterFeeExample}}
                                     <br><br>
                                     <div class="method-example-part">
                                         <span class="snippet-title">Example</span>
@@ -405,16 +405,16 @@
                                 <span class="method-list-item-label-details">optional</span>
                             </h3>
                             <p class="method-list-item-description">
-                                When the <code>rate_calculation_method</code> is set to <code>algo</code>, the 
-                                algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate 
-                                using the variables <code>{distance}</code> and <code>{time}</code>. 
+                                When the <code>rate_calculation_method</code> is set to <code>algo</code>, the
+                                algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate
+                                using the variables <code>{distance}</code> and <code>{time}</code>.
                                 <br>
-                                <ul>
-                                    <li>{distance} - is the distance between the pickup and dropoff in meters.</li>
-                                    <li>{time} - is the estimated time between the pickup and dropoff in seconds.</li>
-                                </ul><br>
-                                <div>Example</div>
-                                <code class="block">(({distance}/1000)*55)+(({time}/60)*33)</code>
+                            <ul>
+                                <li>{distance} - is the distance between the pickup and dropoff in meters.</li>
+                                <li>{time} - is the estimated time between the pickup and dropoff in seconds.</li>
+                            </ul><br>
+                            <div>Example</div>
+                            <code class="block">(({distance}/1000)*55)+(({time}/60)*33)</code>
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -423,7 +423,7 @@
                                 <span class="method-list-item-validation">boolean</span>
                             </h3>
                             <p class="method-list-item-description">
-                                Explicitly set property that determines if the rate should calculate a cash on delivery fee. 
+                                Explicitly set property that determines if the rate should calculate a cash on delivery fee.
                                 Should be either "true" or "false". Defaults to false.
                             </p>
                         </li>
@@ -435,10 +435,10 @@
                             <p class="method-list-item-description">
                                 The calculation method used for cash on delivery, required if <code>has_cod_fee</code> is set to true.
                                 Valid cash on delivery calculation methods: <br>
-                                <ul>
-                                    <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
-                                    <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
-                                </ul>
+                            <ul>
+                                <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
+                            </ul>
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -447,7 +447,7 @@
                                 <span class="method-list-item-validation">integer</span>
                             </h3>
                             <p class="method-list-item-description">
-                                The flat cash on delivery fee amount, 
+                                The flat cash on delivery fee amount,
                                 required when the <code>cod_calculation_method</code> is set to "flat".
                             </p>
                         </li>
@@ -467,7 +467,7 @@
                                 <span class="method-list-item-validation">boolean</span>
                             </h3>
                             <p class="method-list-item-description">
-                                Explicitly set property that determines if the rate should calculate a peak hours fee. 
+                                Explicitly set property that determines if the rate should calculate a peak hours fee.
                                 Should be either "true" or "false". Defaults to false.
                             </p>
                         </li>
@@ -479,10 +479,10 @@
                             <p class="method-list-item-description">
                                 The calculation method used for peak hours, required when <code>has_peak_hours_fee</code> is set to true.
                                 Valid peak hours calculation methods: <br>
-                                <ul>
-                                    <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
-                                    <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
-                                </ul>
+                            <ul>
+                                <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
+                            </ul>
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -613,7 +613,7 @@
             <div class="method-copy-padding">
                 <h1>Update a service rate</h1>
                 <p>
-                    You can update your service rate, with the exception you cannot change the <code>service_type</code> or 
+                    You can update your service rate, with the exception you cannot change the <code>service_type</code> or
                     change the method of how the rate is calculated.
                 </p>
                 <div class="method-list">
@@ -645,8 +645,8 @@
                                 <span class="method-list-item-label-details">optional</span>
                             </h3>
                             <p class="method-list-item-description">
-                                Property that allows the rate to include a base or minimum fee to the start of the calculation. 
-                                The value should be in cents, for example if the flat fee is $2.00 USD per kilometer, 
+                                Property that allows the rate to include a base or minimum fee to the start of the calculation.
+                                The value should be in cents, for example if the flat fee is $2.00 USD per kilometer,
                                 then the value should be "200".
                             </p>
                         </li>
@@ -657,8 +657,8 @@
                             </h3>
                             <p class="method-list-item-description">
                                 This property is required when the <code>rate_calculation_method</code> is set to "by_km". <br>
-                                The flat rate should be the amount in cents, for example if the flat fee is $2.00 USD per kilometer, 
-                                then the value should be "200". <br>The same is true no matter the currency, for example if the flat fee is 
+                                The flat rate should be the amount in cents, for example if the flat fee is $2.00 USD per kilometer,
+                                then the value should be "200". <br>The same is true no matter the currency, for example if the flat fee is
                                 1300 MNT (Mongolian Tugrik), then the value will be "1300".
                             </p>
                         </li>
@@ -669,10 +669,10 @@
                             </h3>
                             <p class="method-list-item-description">
                                 This property is required when the <code>rate_calculation_method</code> is set to "by_km". <br>
-                                Supply a key value array consisting of the distance, and fee for the corresponding distance. 
-                                Distances must increment in linear order. 
-                                <a href="javascript:;" {{action (toggle "displayKmFeeExample" this) on="click"}}>Toggle example</a>
-                                {{#if displayKmFeeExample}}
+                                Supply a key value array consisting of the distance, and fee for the corresponding distance.
+                                Distances must increment in linear order.
+                                <a href="javascript:;" {{on "click" (fn (toggle  "displayKmFeeExample" this))}}>Toggle example</a>
+                                {{#if this.displayKmFeeExample}}
                                     <br><br>
                                     <div class="method-example-part">
                                         <span class="snippet-title">Example</span>
@@ -687,16 +687,16 @@
                                 <span class="method-list-item-label-details">optional</span>
                             </h3>
                             <p class="method-list-item-description">
-                                When the <code>rate_calculation_method</code> is set to <code>algo</code>, the 
-                                algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate 
-                                using the variables <code>{distance}</code> and <code>{time}</code>. 
+                                When the <code>rate_calculation_method</code> is set to <code>algo</code>, the
+                                algorithm must be supplied an mathematical algorithm which can be defined and used to calculate your rate
+                                using the variables <code>{distance}</code> and <code>{time}</code>.
                                 <br>
-                                <ul>
-                                    <li>{distance} - is the distance between the pickup and dropoff in meters.</li>
-                                    <li>{time} - is the estimated time between the pickup and dropoff in seconds.</li>
-                                </ul><br>
-                                <div>Example</div>
-                                <code class="block">(({distance}/1000)*55)+(({time}/60)*33)</code>
+                            <ul>
+                                <li>{distance} - is the distance between the pickup and dropoff in meters.</li>
+                                <li>{time} - is the estimated time between the pickup and dropoff in seconds.</li>
+                            </ul><br>
+                            <div>Example</div>
+                            <code class="block">(({distance}/1000)*55)+(({time}/60)*33)</code>
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -705,7 +705,7 @@
                                 <span class="method-list-item-validation">boolean</span>
                             </h3>
                             <p class="method-list-item-description">
-                                Explicitly set property that determines if the rate should calculate a cash on delivery fee. 
+                                Explicitly set property that determines if the rate should calculate a cash on delivery fee.
                                 Should be either "true" or "false". Defaults to false.
                             </p>
                         </li>
@@ -717,10 +717,10 @@
                             <p class="method-list-item-description">
                                 The calculation method used for cash on delivery, required if <code>has_cod_fee</code> is set to true.
                                 Valid cash on delivery calculation methods: <br>
-                                <ul>
-                                    <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
-                                    <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
-                                </ul>
+                            <ul>
+                                <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                <li><code>flat</code> - An additional flat fee for "cod" calculated into the rate total.</li>
+                            </ul>
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -729,7 +729,7 @@
                                 <span class="method-list-item-validation">integer</span>
                             </h3>
                             <p class="method-list-item-description">
-                                The flat cash on delivery fee amount, 
+                                The flat cash on delivery fee amount,
                                 required when the <code>cod_calculation_method</code> is set to "flat".
                             </p>
                         </li>
@@ -749,7 +749,7 @@
                                 <span class="method-list-item-validation">boolean</span>
                             </h3>
                             <p class="method-list-item-description">
-                                Explicitly set property that determines if the rate should calculate a peak hours fee. 
+                                Explicitly set property that determines if the rate should calculate a peak hours fee.
                                 Should be either "true" or "false". Defaults to false.
                             </p>
                         </li>
@@ -761,10 +761,10 @@
                             <p class="method-list-item-description">
                                 The calculation method used for peak hours, required when <code>has_peak_hours_fee</code> is set to true.
                                 Valid peak hours calculation methods: <br>
-                                <ul>
-                                    <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
-                                    <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
-                                </ul>
+                            <ul>
+                                <li><code>percentage</code> - An additional line fee to the rate based on a percentage calculated from the rate total.</li>
+                                <li><code>flat</code> - An additional flat fee for "peak hours" calculated into the rate total.</li>
+                            </ul>
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -918,7 +918,7 @@
                                 <span class="method-list-item-label-details">optional</span>
                             </h3>
                             <p class="method-list-item-description">
-                               Filter service rates by type.
+                                Filter service rates by type.
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -927,7 +927,7 @@
                                 <span class="method-list-item-label-details">optional</span>
                             </h3>
                             <p class="method-list-item-description">
-                               Filter service rates by currency.
+                                Filter service rates by currency.
                             </p>
                         </li>
                         <li class="method-list-item">
@@ -936,7 +936,7 @@
                                 <span class="method-list-item-label-details">optional</span>
                             </h3>
                             <p class="method-list-item-description">
-                               A cursor for use in pagination. A limit on the number of objects to be returned. Limit can range between 1 and 100, 
+                                A cursor for use in pagination. A limit on the number of objects to be returned. Limit can range between 1 and 100,
                                 and the default is 10.
                             </p>
                         </li>
@@ -946,7 +946,7 @@
                                 <span class="method-list-item-label-details">optional</span>
                             </h3>
                             <p class="method-list-item-description">
-                                A cursor for use in pagination. A offset for the results, 
+                                A cursor for use in pagination. A offset for the results,
                                 when the offset is supplied the results will start from the offset.
                             </p>
                         </li>
