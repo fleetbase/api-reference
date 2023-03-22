@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('tailwindcss/colors');
-
 module.exports = {
   darkMode: ['class', '[data-theme="dark"]'],
   content: ['./app/**/*.{hbs,js}'],
