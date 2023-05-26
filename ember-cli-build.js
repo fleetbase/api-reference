@@ -5,21 +5,26 @@ const postcssImport = require('postcss-import');
 const autoprefixer = require('autoprefixer');
 const postcssPresetEnv = require('postcss-preset-env');
 const tailwind = require('tailwindcss');
+const isGithubPagesEnv = process.env.GITHUB_PAGES_ENV === 'true';
 
 module.exports = function (defaults) {
     let app = new EmberApp(defaults, {
         storeConfigInMeta: false,
 
+        fingerprint: {
+            enabled: isGithubPagesEnv,
+        },
+
         multiIndex: {
-			targets: [
-				{
-					outputPath: 'error.html',
-				},
-				{
-					outputPath: '404.html',
-				},
-			],
-		},
+            targets: [
+                {
+                    outputPath: 'error.html',
+                },
+                {
+                    outputPath: '404.html',
+                },
+            ],
+        },
 
         'ember-prism': {
             theme: 'okaidia',
