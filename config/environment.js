@@ -4,7 +4,7 @@ module.exports = function (environment) {
     let ENV = {
         modulePrefix: '@fleetbase/api-reference',
         environment,
-        rootURL: '',
+        rootURL: environment === 'production' ? '/api-reference' : '/',
 		locationType: 'auto',
         EmberENV: {
             FEATURES: {
