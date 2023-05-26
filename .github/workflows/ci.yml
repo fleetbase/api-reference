@@ -49,9 +49,6 @@ jobs:
     environment:
       name: github-pages
     runs-on: ubuntu-latest
-    concurrency:
-      group: "pages"
-      cancel-in-progress: false
     steps:
     - uses: actions/checkout@v2
 
@@ -66,7 +63,4 @@ jobs:
 
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+      uses: actions/deploy-pages@v2
