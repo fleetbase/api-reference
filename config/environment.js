@@ -1,10 +1,12 @@
 'use strict';
 
+const isGithubPagesEnv = process.env.GITHUB_PAGES_ENV === 'true';
+
 module.exports = function (environment) {
     let ENV = {
         modulePrefix: '@fleetbase/api-reference',
         environment,
-        rootURL: environment === 'production' ? '/api-reference' : '/',
+        rootURL: isGithubPagesEnv ? '/api-reference/' : '/',
 		locationType: 'auto',
         EmberENV: {
             FEATURES: {
