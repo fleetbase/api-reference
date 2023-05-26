@@ -1,66 +1,38 @@
-name: API Reference Docs CI
-
-on:
-  push:
-    branches: [ main ]
-    tags:
-      - 'v*'
-  pull_request:
-    branches: [ main ]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]  # Build on Node.js 16
-
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
 
-    - name: Install Dependencies
-      run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
-    - name: Lint
-      run: yarn lint
+      - name: Build
+        run: yarn build
 
-    - name: Build
-      run: yarn build
-
-    - name: Upload Build Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: build
-        path: dist
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          name: github-pages
+          path: ./dist
 
   deploy:
     needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
-    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
-
-    - name: Download Build Artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: build
-        path: dist
-
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+      - name: Print the URL
+        run: echo "Deployed to ${{ steps.deployment.outputs.page_url }}"
