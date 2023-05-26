@@ -2,10 +2,10 @@
     "name": "@fleetbase/api-reference",
     "version": "0.0.1",
     "private": true,
-    "description": "Small description for @fleetbase/api-reference goes here",
-    "repository": "",
+    "description": "Official Fleetbase API Reference Documentation",
+    "repository": "https://github.com/fleetbase/api-reference",
     "license": "MIT",
-    "author": "",
+    "author": "Ronald A. Richardson <ron@fleetbase.io>",
     "directories": {
         "doc": "doc",
         "test": "tests"

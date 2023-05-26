@@ -8,6 +8,11 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,21 +38,29 @@ jobs:
     - name: Build
       run: yarn build
 
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: dist
+
   deploy:
     needs: build
     environment:
       name: github-pages
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+
     - name: Setup Pages
       uses: actions/configure-pages@v3
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
+
+    - name: Download Build Artifact
+      uses: actions/download-artifact@v2
       with:
         name: build
         path: dist
+
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
