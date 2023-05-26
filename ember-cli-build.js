@@ -10,10 +10,6 @@ module.exports = function (defaults) {
     let app = new EmberApp(defaults, {
         storeConfigInMeta: false,
 
-        fingerprint: {
-			enabled: false,
-		},
-
         multiIndex: {
 			targets: [
 				{
